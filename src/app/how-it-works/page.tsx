@@ -81,7 +81,7 @@ export default function HowItWorksPage() {
             Get your errands done in 6 simple steps
           </h1>
           <p className="mt-3 max-w-2xl text-base text-slate-600 sm:mt-4 sm:text-lg">
-            From creating your errand to payment and rating — here&apos;s how {siteConfig.name} gets things done for you.
+            From creating your errand to payment and rating, here&apos;s how {siteConfig.name} gets things done for you.
           </p>
         </section>
 

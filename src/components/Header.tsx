@@ -137,7 +137,7 @@ function MobileDropdown({
                 className={`rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
                   isActive
                     ? "nav-link-active bg-[color-mix(in_srgb,var(--primary)_12%,transparent)]"
-                    : "text-slate-700 hover:bg-slate-100 hover:text-[var(--primary)] dark:text-slate-300"
+                    : "text-slate-900 hover:bg-slate-100 hover:text-[var(--primary)] dark:text-slate-300"
                 }`}
                 href={navHref(child.href)}
                 onClick={onLinkClick}
@@ -295,7 +295,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   className={`relative pb-1.5 text-sm font-bold transition-colors hover:text-[var(--primary)] ${
-                    isActive ? "nav-link-active" : "text-slate-800 dark:text-slate-200"
+                    isActive ? "nav-link-active" : "text-slate-900 dark:text-slate-200"
                   }`}
                   href={navHref(item.href)}
                 >
@@ -319,7 +319,7 @@ export function Header() {
                 <button
                   type="button"
                   className={`flex items-center gap-1 pb-1.5 text-sm font-bold transition-colors hover:text-[var(--primary)] ${
-                    isActive ? "nav-link-active" : "text-slate-800 dark:text-slate-200"
+                    isActive ? "nav-link-active" : "text-slate-900 dark:text-slate-200"
                   }`}
                   onClick={() => setOpenDropdown(isOpen ? null : item.label)}
                   aria-expanded={isOpen}
@@ -376,7 +376,7 @@ export function Header() {
           </a>
           <button
             type="button"
-            className={`flex h-10 w-10 items-center justify-center rounded-lg text-slate-800 dark:text-slate-200 transition-colors hover:bg-slate-100 md:hidden ${drawerOpen ? "hidden" : ""}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-lg text-slate-900 dark:text-slate-200 transition-colors hover:bg-slate-100 md:hidden ${drawerOpen ? "hidden" : ""}`}
             onClick={() => setDrawerOpen((o) => !o)}
             aria-label="Open menu"
             aria-expanded={drawerOpen}

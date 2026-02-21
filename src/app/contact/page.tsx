@@ -28,7 +28,7 @@ export default function ContactPage() {
           </h1>
           <p className="max-w-2xl text-base text-slate-600">
             Whether you need help with an errand, have a question about the app, want to
-            become a runner, or have a partnership idea — we&apos;re here to help. Reach
+            become a runner, or have a partnership idea, we&apos;re here to help. Reach
             out and we&apos;ll respond within 24 hours.
           </p>
         </section>
@@ -39,7 +39,7 @@ export default function ContactPage() {
               Send us a message
             </h2>
             <p className="text-base text-slate-600">
-              Tell us what you need — app support, runner enquiries, partnership proposals,
+              Tell us what you need: app support, runner enquiries, partnership proposals,
               or feedback. We read every message and will get back to you soon.
             </p>
             <ContactForm />

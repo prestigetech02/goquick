@@ -47,7 +47,7 @@ export default function AboutPage() {
                   About {siteConfig.name}
                 </h1>
                 <p className="max-w-md text-lg text-white/90 sm:text-xl">
-                  We&apos;re building the go-to platform for getting everyday errands done — so you can focus on what matters most.
+                  We&apos;re building the go-to platform for getting everyday errands done so you can focus on what matters most.
                 </p>
                 <div className="flex flex-wrap gap-3 sm:gap-4">
                   <a
@@ -106,14 +106,14 @@ export default function AboutPage() {
             Who we are
           </h2>
           <p className="mt-4 text-slate-600">
-            {siteConfig.name} is your trusted errand and delivery partner. We connect people who need tasks done —
-            from grocery runs and pickups to queue help and deliveries — with verified runners who get the job
+            {siteConfig.name} is your trusted errand and delivery partner. We connect people who need tasks done,
+            from grocery runs and pickups to queue help and deliveries, with verified runners who get the job
             done quickly and reliably.
           </p>
           <p className="mt-4 text-slate-600">
             We started with a simple idea: in busy cities like Lagos, time is one of your most valuable resources.
             Everyday errands shouldn’t eat into your day. With {siteConfig.name}, you book a runner, track progress
-            in real time, and pay securely — all from your phone.
+            in real time, and pay securely, all from your phone.
           </p>
         </section>
 
@@ -207,28 +207,28 @@ export default function AboutPage() {
               <span className="mt-0.5 shrink-0 font-bold text-[var(--primary)]" aria-hidden>•</span>
               <div>
                 <strong className="text-slate-800">Trusted runners</strong>
-                <span className="text-slate-600"> — We work with verified runners so you can rely on the people handling your errands.</span>
+                <span className="text-slate-600"> We work with verified runners so you can rely on the people handling your errands.</span>
               </div>
             </li>
             <li className="flex gap-3">
               <span className="mt-0.5 shrink-0 font-bold text-[var(--primary)]" aria-hidden>•</span>
               <div>
                 <strong className="text-slate-800">Real-time tracking</strong>
-                <span className="text-slate-600"> — See where your errand is and stay updated from request to completion.</span>
+                <span className="text-slate-600"> See where your errand is and stay updated from request to completion.</span>
               </div>
             </li>
             <li className="flex gap-3">
               <span className="mt-0.5 shrink-0 font-bold text-[var(--primary)]" aria-hidden>•</span>
               <div>
                 <strong className="text-slate-800">Secure payments</strong>
-                <span className="text-slate-600"> — Pay safely in the app with transparent pricing and no surprise charges.</span>
+                <span className="text-slate-600"> Pay safely in the app with transparent pricing and no surprise charges.</span>
               </div>
             </li>
             <li className="flex gap-3">
               <span className="mt-0.5 shrink-0 font-bold text-[var(--primary)]" aria-hidden>•</span>
               <div>
                 <strong className="text-slate-800">Built for your city</strong>
-                <span className="text-slate-600"> — We’re focused on serving our users where they live, starting with Lagos and expanding to more cities.</span>
+                <span className="text-slate-600"> We’re focused on serving our users where they live, starting with Lagos and expanding to more cities.</span>
               </div>
             </li>
           </ul>

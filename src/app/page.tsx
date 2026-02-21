@@ -19,7 +19,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Book Reliable Runners For Everyday Tasks",
   description:
-    "Get errands done faster with GoQuick. Trusted runners, real-time tracking, secure payment—from pickup to delivery.",
+    "Get errands done faster with GoQuick. Trusted runners, real-time tracking, secure payment from pickup to delivery.",
 };
 
 export default function Home() {
@@ -72,8 +72,8 @@ export default function Home() {
                 Get it done ASAP.
               </p>
               <p className="max-w-xl text-lg font-medium text-slate-600 sm:text-lg">
-                Get errands done fast — grocery shopping, deliveries, queues &
-                more — right here in Lagos.
+                Get errands done fast. Grocery shopping, deliveries, queues and
+                more, right here in Lagos.
               </p>
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <a
@@ -133,7 +133,7 @@ export default function Home() {
             <div className="relative order-2 flex min-w-0 items-center justify-center sm:order-1">
               <Image
                 src="/goquick-image.png"
-                alt="GoQuick app on two phones — home screen and runner screen"
+                alt="GoQuick app on two phones, home screen and runner screen"
                 width={400}
                 height={600}
                 className="h-auto w-full max-w-[280px] object-contain object-center sm:max-w-[320px] md:max-w-[360px]"
@@ -200,7 +200,7 @@ export default function Home() {
               </div>
               <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Chat & Confirm</h3>
               <p className="mt-2 text-sm text-slate-600">
-                Use in-app messaging to clarify instructions or special requirements.
+                Use app messaging to clarify instructions or special requirements.
               </p>
             </article>
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">

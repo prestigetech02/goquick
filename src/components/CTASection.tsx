@@ -35,7 +35,7 @@ export function CTASection() {
             Download the app. Get errands done.
           </h2>
           <p className="max-w-md text-lg text-white/90 sm:text-xl">
-            Book trusted runners for pickups, deliveries, and daily tasks. Save time — get it done.
+            Book trusted runners for pickups, deliveries, and daily tasks. Save time, get it done.
           </p>
           <div className="flex flex-wrap gap-3 sm:gap-4">
             <a

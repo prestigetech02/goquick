@@ -133,7 +133,7 @@ export function FAQ({ items = DEFAULT_FAQS, showHeading = true }: { items?: FAQI
               <div>
                 <strong className="text-slate-900">Real answers</strong>
                 <p className="mt-1 text-sm text-slate-600">
-                  Straightforward answers from our team — no bots, no runaround.
+                  Straightforward answers from our team. No bots, no runaround.
                 </p>
               </div>
             </li>
