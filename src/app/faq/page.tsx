@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { FAQ, DEFAULT_FAQS } from "@/components/FAQ";
+import { FAQ } from "@/components/FAQ";
 import { CTASection } from "@/components/CTASection";
+import { DEFAULT_FAQS } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title: "FAQ",
