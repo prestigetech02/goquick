@@ -32,24 +32,33 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} | Fast, Trusted Errand Delivery`,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [{ url: `${siteConfig.siteUrl}/appicon.png`, width: 512, height: 512, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | Fast, Trusted Errand Delivery`,
     description: siteConfig.description,
     creator: siteConfig.social.twitterHandle,
+    images: [`${siteConfig.siteUrl}/appicon.png`],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
-  },
+  robots:
+    process.env.VERCEL_ENV === "production"
+      ? {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-snippet": -1,
+            "max-image-preview": "large",
+            "max-video-preview": -1,
+          },
+        }
+      : {
+          index: false,
+          follow: false,
+          googleBot: { index: false, follow: false },
+        },
 };
 
 export default function RootLayout({

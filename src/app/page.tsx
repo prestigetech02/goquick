@@ -4,6 +4,7 @@ import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ServiceCards } from "@/components/ServiceCards";
+import { StatsBlock } from "@/components/StatsBlock";
 import { StoreButton } from "@/components/StoreButton";
 import {
   IconChat,
@@ -15,6 +16,9 @@ import {
 } from "@/components/StepIcons";
 import { TypingWord } from "@/components/TypingWord";
 import { siteConfig } from "@/lib/site";
+
+const APP_STORE_URL = "https://apps.apple.com/app/goquick/id";
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.goquick.app";
 
 export const metadata: Metadata = {
   title: "Book Reliable Runners For Everyday Tasks",
@@ -63,22 +67,22 @@ export default function Home() {
             className="relative mx-auto grid w-full max-w-6xl gap-8 px-4 pb-4 pt-6 sm:grid-cols-2 sm:gap-12 sm:px-6 sm:pb-6 sm:pt-8 lg:px-10 md:gap-16 md:pb-8 md:pt-10"
           >
             <div className="flex flex-col justify-center gap-4 sm:gap-6">
-              <h1 className="text-4xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
+              <h1 className="text-2xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
                 Got <TypingWord />?
               </h1>
-              <p className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-5xl">
+              <p className="text-xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-5xl">
                 Stop Wasting Time.
                 <br />
                 Get it done ASAP.
               </p>
-              <p className="max-w-xl text-lg font-medium text-slate-600 sm:text-lg">
+              <p className="max-w-xl text-base font-medium text-slate-600 sm:text-lg">
                 Get errands done fast. Grocery shopping, deliveries, queues and
                 more, right here in Lagos.
               </p>
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <a
                   className="inline-block transition hover:opacity-90"
-                  href="https://apps.apple.com/app/goquick/id"
+                  href={APP_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Download on the App Store"
@@ -88,12 +92,12 @@ export default function Home() {
                     alt="Download on the App Store"
                     width={160}
                     height={56}
-                    className="h-8 w-auto object-contain sm:h-9 md:h-10"
+                    className="h-7 w-auto object-contain sm:h-9 md:h-10"
                   />
                 </a>
                 <a
                   className="inline-block transition hover:opacity-90"
-                  href="https://play.google.com/store/apps/details?id="
+                  href={PLAY_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Get it on Google Play"
@@ -103,7 +107,7 @@ export default function Home() {
                     alt="Get it on Google Play"
                     width={160}
                     height={56}
-                    className="h-8 w-auto object-contain sm:h-9 md:h-10"
+                    className="h-7 w-auto object-contain sm:h-9 md:h-10"
                   />
                 </a>
               </div>
@@ -121,6 +125,8 @@ export default function Home() {
             </div>
           </section>
         </div>
+
+        <StatsBlock />
 
         <section
           id="about"
@@ -141,7 +147,7 @@ export default function Home() {
               />
             </div>
             <div className="order-1 flex min-w-0 flex-col justify-center space-y-4 sm:order-2 sm:space-y-6">
-              <h2 className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl">
+              <h2 className="text-xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl">
                 Time is valuable. Get errands done ASAP with GoQuick.
               </h2>
               <p className="text-base text-slate-600 sm:text-lg">
@@ -168,61 +174,61 @@ export default function Home() {
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">
-              <div className="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-4 [&_svg]:w-4 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
+              <div className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-3.5 [&_svg]:w-3.5 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
                 <IconCreate />
               </div>
-              <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Create an Errand</h3>
+              <h3 className="text-sm font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Create an Errand</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Open the app and create your errand: shopping, delivery, queue help, pickups etc.
               </p>
             </article>
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">
-              <div className="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-4 [&_svg]:w-4 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
+              <div className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-3.5 [&_svg]:w-3.5 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
                 <IconDetails />
               </div>
-              <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Set the Details</h3>
+              <h3 className="text-sm font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Set the Details</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Add location, instructions, budget, and deadline so runners know exactly what to do.
               </p>
             </article>
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">
-              <div className="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-4 [&_svg]:w-4 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
+              <div className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-3.5 [&_svg]:w-3.5 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
                 <IconMatch />
               </div>
-              <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Get Matched Instantly</h3>
+              <h3 className="text-sm font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Get Matched Instantly</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Nearby verified runners receive your request and accept the job.
               </p>
             </article>
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">
-              <div className="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-4 [&_svg]:w-4 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
+              <div className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-3.5 [&_svg]:w-3.5 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
                 <IconChat />
               </div>
-              <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Chat & Confirm</h3>
+              <h3 className="text-sm font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Chat & Confirm</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Use app messaging to clarify instructions or special requirements.
               </p>
             </article>
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">
-              <div className="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-4 [&_svg]:w-4 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
+              <div className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-3.5 [&_svg]:w-3.5 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
                 <IconTrack />
               </div>
-              <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Track in Real Time</h3>
+              <h3 className="text-sm font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Track in Real Time</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Follow your errand live and stay updated every step of the way.
               </p>
             </article>
             <article className="flex flex-col items-start rounded-xl border border-slate-200 bg-white p-5 text-left sm:p-6">
-              <div className="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-4 [&_svg]:w-4 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
+              <div className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 sm:h-10 sm:w-10 [&_svg]:h-3.5 [&_svg]:w-3.5 sm:[&_svg]:h-5 sm:[&_svg]:w-5">
                 <IconPay />
               </div>
-              <h3 className="text-base font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Pay Securely & Rate</h3>
+              <h3 className="text-sm font-bold sm:text-lg" style={{ color: "var(--primary)" }}>Pay Securely & Rate</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Complete payment safely in the app and rate your experience.
               </p>
             </article>
           </div>
-          <p className="mx-auto max-w-xl text-xl font-bold text-slate-800 sm:text-2xl">
+          <p className="mx-auto max-w-xl text-base font-bold text-slate-800 sm:text-2xl">
             Less stress. Less waiting. More done.
           </p>
         </section>
@@ -257,9 +263,9 @@ export default function Home() {
         </section>
 
         <section
-          id="runners"
-          className="w-full min-w-0 -mt-12 py-12 sm:-mt-16 sm:py-16 md:-mt-24"
-          style={{ backgroundColor: "color-mix(in srgb, var(--primary) 8%, white)" }}
+          id="for-runners"
+          className="w-full min-w-0 -mt-12 bg-white py-12 sm:-mt-16 sm:py-16 md:-mt-24"
+          aria-labelledby="for-runners-heading"
         >
           <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-12 sm:px-6 lg:px-10 md:gap-16">
             <div className="relative flex min-w-0 items-center justify-center">
@@ -273,7 +279,10 @@ export default function Home() {
               />
             </div>
             <div className="flex min-w-0 flex-col justify-center space-y-6 py-6 sm:space-y-8 sm:py-8">
-              <h2 className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl" style={{ color: "var(--primary)" }}>
+              <p className="text-sm font-semibold uppercase tracking-wide" style={{ color: "var(--primary)" }}>
+                For runners
+              </p>
+              <h2 id="for-runners-heading" className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl" style={{ color: "var(--primary)" }}>
                 Earn Money Running Errands, On Your Schedule
               </h2>
               <p className="text-slate-600">
@@ -300,9 +309,67 @@ export default function Home() {
               <p className="font-medium text-slate-800">
                 Join one of the fastest growing errand and delivery partner networks in your city.
               </p>
-              <StoreButton className="inline-block w-fit rounded-lg bg-[var(--primary)] px-6 py-3 font-medium text-white transition hover:opacity-95">
+              <StoreButton className="inline-block w-fit rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base">
                 Become a Runner
               </StoreButton>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pricing"
+          className="w-full min-w-0 py-12 sm:py-16 md:py-20"
+          style={{ backgroundColor: "color-mix(in srgb, var(--primary) 6%, white)" }}
+          aria-labelledby="pricing-heading"
+        >
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10">
+            <h2 id="pricing-heading" className="text-center text-xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl" style={{ color: "var(--primary)" }}>
+              Simple, Transparent Pricing
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600 sm:text-lg">
+              No hidden fees. You see the cost before you book, and runners know what they earn.
+            </p>
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-10 lg:gap-12">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h3 className="text-lg font-bold text-slate-900 sm:text-xl">For requesters</h3>
+                <p className="mt-2 text-sm text-slate-600 sm:text-base">
+                  When you need errands done
+                </p>
+                <ul className="mt-6 space-y-3">
+                  <li className="flex gap-3 text-sm text-slate-700 sm:text-base">
+                    <span className="shrink-0 font-bold" style={{ color: "var(--primary)" }} aria-hidden>✔</span>
+                    Pay per errand: set your budget or agree on a price with your runner
+                  </li>
+                  <li className="flex gap-3 text-sm text-slate-700 sm:text-base">
+                    <span className="shrink-0 font-bold" style={{ color: "var(--primary)" }} aria-hidden>✔</span>
+                    Transparent pricing: see estimated cost before you confirm
+                  </li>
+                  <li className="flex gap-3 text-sm text-slate-700 sm:text-base">
+                    <span className="shrink-0 font-bold" style={{ color: "var(--primary)" }} aria-hidden>✔</span>
+                    Secure payment in the app; pay only when the job is done
+                  </li>
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h3 className="text-lg font-bold text-slate-900 sm:text-xl">For runners</h3>
+                <p className="mt-2 text-sm text-slate-600 sm:text-base">
+                  When you want to earn
+                </p>
+                <ul className="mt-6 space-y-3">
+                  <li className="flex gap-3 text-sm text-slate-700 sm:text-base">
+                    <span className="shrink-0 font-bold" style={{ color: "var(--primary)" }} aria-hidden>✔</span>
+                    Earn per task: you see the offer before you accept
+                  </li>
+                  <li className="flex gap-3 text-sm text-slate-700 sm:text-base">
+                    <span className="shrink-0 font-bold" style={{ color: "var(--primary)" }} aria-hidden>✔</span>
+                    Clear payouts: no surprise deductions; get paid reliably
+                  </li>
+                  <li className="flex gap-3 text-sm text-slate-700 sm:text-base">
+                    <span className="shrink-0 font-bold" style={{ color: "var(--primary)" }} aria-hidden>✔</span>
+                    Flexible: work when you want and build your own schedule
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

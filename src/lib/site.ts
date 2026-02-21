@@ -29,4 +29,10 @@ export const siteConfig = {
     email: "support@goquickapp.com.ng",
     phone: "+234 (0) 906 906 3200",
   },
+  /** Stats for the homepage stats block. Count-up animates from 0 to numericValue. */
+  stats: [
+    { numericValue: 10000, suffix: "+", label: "Errands completed", format: "compact" as const },
+    { numericValue: 50, suffix: "+", label: "Verified runners", format: "number" as const },
+    { numericValue: 500, suffix: "+", label: "Errand requesters", format: "number" as const },
+  ],
 };

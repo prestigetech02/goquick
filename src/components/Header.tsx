@@ -65,32 +65,32 @@ function ChevronDown({ className }: { className?: string }) {
 
 const megaMenuIcons: Record<NavMegaItem["icon"], ReactElement> = {
   building: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
     </svg>
   ),
   briefcase: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
     </svg>
   ),
   document: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
     </svg>
   ),
   steps: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18V6z" />
     </svg>
   ),
   question: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
     </svg>
   ),
   support: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
     </svg>
   ),
@@ -117,7 +117,7 @@ function MobileDropdown({
     <div className="flex flex-col gap-1">
       <button
         type="button"
-        className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-bold text-slate-900 transition-colors hover:bg-slate-100 hover:text-[var(--primary)] dark:text-slate-100"
+        className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-sm font-bold text-slate-900 transition-colors hover:bg-slate-100 hover:text-[var(--primary)] dark:text-slate-100 sm:py-3 sm:text-base"
         onClick={onToggle}
         aria-expanded={expanded}
       >
@@ -268,7 +268,7 @@ export function Header() {
           : "border-slate-200 bg-white/95 backdrop-blur"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-10">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-10 sm:py-4">
         <Link
           className="flex shrink-0 items-center gap-3"
           href="/"
@@ -276,7 +276,7 @@ export function Header() {
         >
           <Image
             alt={`${siteConfig.name} logo`}
-            className="h-10 w-auto object-contain"
+            className="h-8 w-auto object-contain sm:h-10"
             height={40}
             priority
             src="/logo.png"
@@ -284,7 +284,11 @@ export function Header() {
           />
         </Link>
 
-        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex" aria-label="Main">
+        {/* Desktop nav: mega menu style, inactive items use inline dark color so they stay visible on light header */}
+        <nav
+          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex"
+          aria-label="Main"
+        >
           {navItems.map((item) => {
             if ("href" in item) {
               const sectionId = getSectionIdFromHref(item.href);
@@ -294,10 +298,12 @@ export function Header() {
               return (
                 <Link
                   key={item.href}
-                  className={`relative pb-1.5 text-sm font-bold transition-colors hover:text-[var(--primary)] ${
-                    isActive ? "nav-link-active" : "text-slate-900 dark:text-slate-200"
-                  }`}
                   href={navHref(item.href)}
+                  className="relative pb-1.5 text-sm font-bold transition-colors hover:text-[var(--primary)]"
+                  style={{
+                    color: isActive ? "var(--primary)" : "#1e293b",
+                    borderBottom: isActive ? "2px solid var(--primary)" : undefined,
+                  }}
                 >
                   {item.label}
                 </Link>
@@ -318,9 +324,11 @@ export function Header() {
               >
                 <button
                   type="button"
-                  className={`flex items-center gap-1 pb-1.5 text-sm font-bold transition-colors hover:text-[var(--primary)] ${
-                    isActive ? "nav-link-active" : "text-slate-900 dark:text-slate-200"
-                  }`}
+                  className="flex items-center gap-1 pb-1.5 text-sm font-bold transition-colors hover:text-[var(--primary)]"
+                  style={{
+                    color: isActive ? "var(--primary)" : "#1e293b",
+                    borderBottom: isActive ? "2px solid var(--primary)" : undefined,
+                  }}
                   onClick={() => setOpenDropdown(isOpen ? null : item.label)}
                   aria-expanded={isOpen}
                   aria-haspopup="true"
@@ -333,29 +341,32 @@ export function Header() {
                     isOpen ? "opacity-100" : "pointer-events-none opacity-0"
                   } transition-opacity`}
                 >
-                  <div className="rounded-xl border border-slate-200 border-b-[3px] bg-white p-4 shadow-xl dark:border-slate-700 dark:bg-slate-800 sm:p-6" style={{ borderBottomColor: "var(--primary)" }}>
+                  <div
+                    className="rounded-xl border border-slate-200 border-b-[3px] bg-white p-4 shadow-xl dark:border-slate-700 dark:bg-slate-800 sm:p-6"
+                    style={{ borderBottomColor: "var(--primary)" }}
+                  >
                     <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
                       {item.children
                         .filter((child, index, arr) => arr.findIndex((c) => c.label === child.label) === index)
                         .map((child) => (
-                        <Link
-                          key={child.label}
-                          className="group flex flex-col rounded-lg p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50"
-                          href={navHref(child.href)}
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          <div
-                            className="mb-3 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg"
-                            style={{ backgroundColor: "color-mix(in srgb, var(--primary) 12%, white)" }}
+                          <Link
+                            key={child.label}
+                            className="group flex flex-col rounded-lg p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50"
+                            href={navHref(child.href)}
+                            onClick={() => setOpenDropdown(null)}
                           >
-                            <span style={{ color: "var(--primary)" }}>{megaMenuIcons[child.icon]}</span>
-                          </div>
-                          <span className="mb-1 font-bold text-slate-900 group-hover:text-[var(--primary)] dark:text-slate-100">
-                            {child.label}
-                          </span>
-                          <span className="text-sm text-slate-600 dark:text-slate-400">{child.description}</span>
-                        </Link>
-                      ))}
+                            <div
+                              className="mb-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12"
+                              style={{ backgroundColor: "color-mix(in srgb, var(--primary) 12%, white)" }}
+                            >
+                              <span style={{ color: "var(--primary)" }}>{megaMenuIcons[child.icon]}</span>
+                            </div>
+                            <span className="mb-1 font-bold text-slate-900 group-hover:text-[var(--primary)] dark:text-slate-100">
+                              {child.label}
+                            </span>
+                            <span className="text-sm text-slate-600 dark:text-slate-400">{child.description}</span>
+                          </Link>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -372,11 +383,11 @@ export function Header() {
               backgroundColor: "var(--primary)",
             }}
           >
-            Download
+            Get GoQuick
           </a>
           <button
             type="button"
-            className={`flex h-10 w-10 items-center justify-center rounded-lg text-slate-900 dark:text-slate-200 transition-colors hover:bg-slate-100 md:hidden ${drawerOpen ? "hidden" : ""}`}
+            className={`flex h-9 w-9 items-center justify-center rounded-lg text-slate-900 dark:text-slate-200 transition-colors hover:bg-slate-100 md:hidden sm:h-10 sm:w-10 ${drawerOpen ? "hidden" : ""}`}
             onClick={() => setDrawerOpen((o) => !o)}
             aria-label="Open menu"
             aria-expanded={drawerOpen}
@@ -404,15 +415,15 @@ export function Header() {
         role="dialog"
         aria-modal="true"
       >
-        <div className="flex shrink-0 items-center justify-between border-b border-slate-200 px-6 py-4">
-          <span className="text-lg font-bold text-slate-900">Menu</span>
+        <div className="flex shrink-0 items-center justify-between border-b border-slate-200 px-4 py-3 sm:px-6 sm:py-4">
+          <span className="text-base font-bold text-slate-900 sm:text-lg">Menu</span>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800 sm:h-10 sm:w-10"
             onClick={closeDrawer}
             aria-label="Close menu"
           >
-            <span className="text-2xl leading-none">&times;</span>
+            <span className="text-xl leading-none sm:text-2xl">&times;</span>
           </button>
         </div>
         <nav className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto p-4" aria-label="Main mobile">
@@ -425,7 +436,7 @@ export function Header() {
               return (
                 <Link
                   key={item.href}
-                  className={`rounded-lg px-4 py-3 text-base font-bold transition-colors ${
+                  className={`rounded-lg px-4 py-2.5 text-sm font-bold transition-colors sm:py-3 sm:text-base ${
                     isActive
                       ? "nav-link-active bg-[color-mix(in_srgb,var(--primary)_12%,transparent)]"
                       : "text-slate-900 dark:text-slate-200 hover:bg-slate-100 hover:text-[var(--primary)]"
@@ -453,12 +464,12 @@ export function Header() {
         </nav>
         <div className="shrink-0 border-t border-slate-200 p-4">
           <a
-            className="block w-full rounded-lg px-4 py-3 text-center text-sm font-medium text-white transition-colors hover:opacity-95"
+            className="block w-full rounded-lg px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:opacity-95 sm:py-3"
             href={siteConfig.appDownloadUrl ?? "/"}
             style={{ backgroundColor: "var(--primary)" }}
             onClick={closeDrawer}
           >
-            Download
+            Get GoQuick
           </a>
         </div>
       </div>

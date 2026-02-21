@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Contact GoQuick for errand support, runner signups, payment help, partnerships, and feedback. We respond within 24 hours.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -22,7 +23,7 @@ export default function ContactPage() {
           </p>
           <h1
             id="contact-heading"
-            className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
+            className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
           >
             Get in touch with the GoQuick team
           </h1>
@@ -35,7 +36,7 @@ export default function ContactPage() {
 
         <section className="grid gap-10 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
           <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
               Send us a message
             </h2>
             <p className="text-base text-slate-600">
@@ -46,7 +47,7 @@ export default function ContactPage() {
           </div>
 
           <aside className="space-y-6 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8 md:min-w-0">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
               GoQuick headquarters
             </h2>
             <p className="text-base text-slate-600">

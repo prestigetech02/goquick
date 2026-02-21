@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "GoQuick Terms of Service: rules and agreement for using our errand and runner app and related services.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
@@ -20,7 +21,7 @@ export default function TermsPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
             Legal
           </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             Terms of Service
           </h1>
           <p className="mt-4 text-slate-600">

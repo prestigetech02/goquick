@@ -16,6 +16,8 @@ const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.goquic
 
 const quickLinks = [
   { label: "Features", href: "/#services" },
+  { label: "For Runners", href: "/#for-runners" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "About Us", href: "/about" },
   { label: "Careers", href: "/careers" },
@@ -78,7 +80,7 @@ export function Footer() {
                 alt={siteConfig.name}
                 width={120}
                 height={40}
-                className="h-9 w-auto object-contain"
+                className="h-7 w-auto object-contain sm:h-9"
               />
             </Link>
             <p className="max-w-xs text-sm text-slate-300">
@@ -91,10 +93,10 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/50 text-white transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)]"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/50 text-white transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)] sm:h-9 sm:w-9"
                   aria-label={label}
                 >
-                  <HugeiconsIcon icon={icon} size={18} color="currentColor" />
+                  <HugeiconsIcon icon={icon} size={16} color="currentColor" />
                 </a>
               ))}
             </div>
@@ -179,7 +181,7 @@ export function Footer() {
                     alt="Download on the App Store"
                     width={120}
                     height={36}
-                    className="h-8 w-auto object-contain sm:h-9"
+                    className="h-7 w-auto object-contain sm:h-9"
                   />
                 </a>
                 <a
@@ -195,7 +197,7 @@ export function Footer() {
                     alt="Get it on Google Play"
                     width={120}
                     height={36}
-                    className="h-8 w-auto object-contain sm:h-9"
+                    className="h-7 w-auto object-contain sm:h-9"
                   />
                 </a>
               </div>

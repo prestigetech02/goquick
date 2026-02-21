@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "News, tips, and updates from GoQuick. Learn about errands, runners, and how we're making everyday tasks easier in Lagos.",
+  alternates: { canonical: "/blog" },
 };
 
 const API_BASE = siteConfig.apiBaseUrl;
@@ -105,6 +106,7 @@ export default async function BlogPage() {
                           src={imgSrc}
                           alt=""
                           className="h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+                          loading="lazy"
                         />
                       </div>
                     ) : (

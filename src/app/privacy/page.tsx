@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "GoQuick Privacy Policy: how we collect, use, and protect your data when you use our errand and runner app.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
@@ -20,7 +21,7 @@ export default function PrivacyPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
             Legal
           </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             Privacy Policy
           </h1>
           <p className="mt-4 text-slate-600">

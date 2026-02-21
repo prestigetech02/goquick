@@ -43,17 +43,17 @@ export function CareersPageContent({
           <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
             Careers
           </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             Join the {siteConfig.name} team
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-600">
+          <p className="mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">
             We&apos;re building the go-to platform for errands and deliveries. If you want to help people reclaim their
             time and give runners a better way to earn, we&apos;d love to hear from you.
           </p>
         </header>
 
         <section className="mb-16">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             Why join us
           </h2>
           <ul className="mt-6 space-y-3">
@@ -67,7 +67,7 @@ export function CareersPageContent({
         </section>
 
         <section className="mb-16">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             Open positions
           </h2>
           <p className="mt-2 text-slate-600">
@@ -105,7 +105,7 @@ export function CareersPageContent({
         </section>
 
         <section className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 text-center sm:p-8">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             Get in touch
           </h2>
           <p className="mt-3 text-slate-600">
@@ -114,13 +114,13 @@ export function CareersPageContent({
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
               href={`mailto:${careersEmail}`}
-              className="inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-6 py-3 font-medium text-white transition hover:opacity-95"
+              className="inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base"
             >
               Email careers
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 sm:px-6 sm:py-3 sm:text-base"
             >
               Contact us
             </Link>

@@ -14,7 +14,7 @@ const CATEGORY_LABELS: Record<FAQCategory, string> = {
   service: "Service & areas",
 };
 
-const DEFAULT_FAQS: FAQItem[] = [
+export const DEFAULT_FAQS: FAQItem[] = [
   {
     question: "What kind of errands can I get done with GoQuick?",
     answer:
@@ -56,7 +56,7 @@ const DEFAULT_FAQS: FAQItem[] = [
 function ChevronDown({ open }: { open: boolean }) {
   return (
     <svg
-      className={`h-5 w-5 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+      className={`h-4 w-4 shrink-0 transition-transform sm:h-5 sm:w-5 ${open ? "rotate-180" : ""}`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -92,11 +92,11 @@ export function FAQ({ items = DEFAULT_FAQS, showHeading = true }: { items?: FAQI
         {/* Left: General help section */}
         <div className="flex flex-col space-y-6 sm:space-y-8">
           {showHeading && (
-            <h2 className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl" style={{ color: "var(--primary)" }}>
+            <h2 className="text-xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl" style={{ color: "var(--primary)" }}>
               Frequently Asked Questions
             </h2>
           )}
-          <h3 className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl">
+          <h3 className="text-xl font-extrabold leading-tight text-slate-900 sm:text-3xl">
             We&apos;re always here to help
           </h3>
           <p className="max-w-md text-base text-slate-600 sm:text-lg">
@@ -105,7 +105,7 @@ export function FAQ({ items = DEFAULT_FAQS, showHeading = true }: { items?: FAQI
           <ul className="space-y-4 sm:space-y-5">
             <li className="flex gap-3">
               <span
-                className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white"
+                className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white sm:h-8 sm:w-8"
                 style={{ backgroundColor: "var(--primary)" }}
                 aria-hidden
               >
@@ -122,7 +122,7 @@ export function FAQ({ items = DEFAULT_FAQS, showHeading = true }: { items?: FAQI
             </li>
             <li className="flex gap-3">
               <span
-                className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white"
+                className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white sm:h-8 sm:w-8"
                 style={{ backgroundColor: "var(--primary)" }}
                 aria-hidden
               >
@@ -173,7 +173,7 @@ export function FAQ({ items = DEFAULT_FAQS, showHeading = true }: { items?: FAQI
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? null : index)}
-                      className="flex w-full items-center justify-between gap-4 py-4 text-left transition-colors hover:bg-slate-50/50 sm:py-5"
+                      className="flex w-full items-center justify-between gap-4 py-3 text-left text-sm transition-colors hover:bg-slate-50/50 sm:py-5 sm:text-base"
                       aria-expanded={isOpen}
                     >
                       <span className="font-semibold text-slate-900 sm:text-base">{item.question}</span>

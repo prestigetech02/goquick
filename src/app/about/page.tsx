@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn about GoQuick: we connect you with trusted runners for errands, deliveries, and daily tasks so you can reclaim your time.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -42,11 +43,11 @@ export default function AboutPage() {
               <div className="space-y-6 text-white">
                 <h1
                   id="about-hero-heading"
-                  className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl"
+                  className="text-2xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl"
                 >
                   About {siteConfig.name}
                 </h1>
-                <p className="max-w-md text-lg text-white/90 sm:text-xl">
+                <p className="max-w-md text-base text-white/90 sm:text-xl">
                   We&apos;re building the go-to platform for getting everyday errands done so you can focus on what matters most.
                 </p>
                 <div className="flex flex-wrap gap-3 sm:gap-4">
@@ -63,7 +64,7 @@ export default function AboutPage() {
                       alt="Download on the App Store"
                       width={160}
                       height={56}
-                      className="h-10 w-auto object-contain sm:h-11 md:h-12"
+                      className="h-8 w-auto object-contain sm:h-11 md:h-12"
                     />
                   </a>
                   <a
@@ -79,7 +80,7 @@ export default function AboutPage() {
                       alt="Get it on Google Play"
                       width={160}
                       height={56}
-                      className="h-10 w-auto object-contain sm:h-11 md:h-12"
+                      className="h-8 w-auto object-contain sm:h-11 md:h-12"
                     />
                   </a>
                 </div>
@@ -102,7 +103,7 @@ export default function AboutPage() {
 
         <div className="mx-auto mt-16 w-full max-w-5xl">
         <section className="mb-16">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             Who we are
           </h2>
           <p className="mt-4 text-slate-600">
@@ -120,7 +121,7 @@ export default function AboutPage() {
         <div className="mb-16 grid gap-6 sm:grid-cols-2 sm:gap-8">
           <section className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8">
             <div
-              className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white"
+              className="mb-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white sm:h-12 sm:w-12"
               style={{ backgroundColor: "var(--primary)" }}
               aria-hidden
             >
@@ -131,7 +132,7 @@ export default function AboutPage() {
               </svg>
             </div>
             <h2
-              className="inline-block rounded-lg px-3 py-1.5 text-xl font-bold text-white sm:text-2xl"
+              className="inline-block rounded-lg px-3 py-1.5 text-lg font-bold text-white sm:text-2xl"
               style={{ backgroundColor: "var(--primary)" }}
             >
               Our mission
@@ -144,7 +145,7 @@ export default function AboutPage() {
           </section>
           <section className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8">
             <div
-              className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white"
+              className="mb-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white sm:h-12 sm:w-12"
               style={{ backgroundColor: "var(--primary)" }}
               aria-hidden
             >
@@ -154,7 +155,7 @@ export default function AboutPage() {
               </svg>
             </div>
             <h2
-              className="inline-block rounded-lg px-3 py-1.5 text-xl font-bold text-white sm:text-2xl"
+              className="inline-block rounded-lg px-3 py-1.5 text-lg font-bold text-white sm:text-2xl"
               style={{ backgroundColor: "var(--primary)" }}
             >
               Our vision
@@ -168,7 +169,7 @@ export default function AboutPage() {
         </div>
 
         <section className="mb-16">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             What we do
           </h2>
           <p className="mt-4 text-slate-600">
@@ -199,7 +200,7 @@ export default function AboutPage() {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             Why choose us
           </h2>
           <ul className="mt-6 space-y-4">
@@ -235,7 +236,7 @@ export default function AboutPage() {
         </section>
 
         <section className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 text-center sm:p-8">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
+          <h2 className="text-lg font-bold text-slate-900 sm:text-2xl">
             Get started today
           </h2>
           <p className="mt-3 text-slate-600">
@@ -244,13 +245,13 @@ export default function AboutPage() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/#home"
-              className="inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-6 py-3 font-medium text-white transition hover:opacity-95"
+              className="inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base"
             >
               Download the app
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 sm:px-6 sm:py-3 sm:text-base"
             >
               Contact us
             </Link>

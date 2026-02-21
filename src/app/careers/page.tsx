@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Careers",
   description:
     "Join GoQuick. We're building the go-to platform for errands and deliveries. See open roles and join our team.",
+  alternates: { canonical: "/careers" },
 };
 
 const CAREERS_EMAIL = "careers@goquickapp.com.ng";

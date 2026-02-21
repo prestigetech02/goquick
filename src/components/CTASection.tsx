@@ -30,11 +30,11 @@ export function CTASection() {
         <div className="space-y-6 text-white">
           <h2
             id="cta-heading"
-            className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl"
+            className="text-xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl"
           >
             Download the app. Get errands done.
           </h2>
-          <p className="max-w-md text-lg text-white/90 sm:text-xl">
+          <p className="max-w-md text-base text-white/90 sm:text-xl">
             Book trusted runners for pickups, deliveries, and daily tasks. Save time, get it done.
           </p>
           <div className="flex flex-wrap gap-3 sm:gap-4">
@@ -51,7 +51,7 @@ export function CTASection() {
                 alt="Download on the App Store"
                 width={160}
                 height={56}
-                className="h-10 w-auto object-contain sm:h-11 md:h-12"
+                className="h-8 w-auto object-contain sm:h-11 md:h-12"
               />
             </a>
             <a
@@ -66,7 +66,7 @@ export function CTASection() {
                 alt="Get it on Google Play"
                 width={160}
                 height={56}
-                className="h-10 w-auto object-contain sm:h-11 md:h-12"
+                className="h-8 w-auto object-contain sm:h-11 md:h-12"
               />
             </a>
           </div>

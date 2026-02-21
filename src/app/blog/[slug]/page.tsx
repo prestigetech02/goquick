@@ -67,6 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt || undefined,
+    alternates: { canonical: `/blog/${slug}` },
   };
 }
 
@@ -112,6 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
                 src={imgSrc}
                 alt=""
                 className="h-full w-full object-cover"
+                loading="lazy"
               />
             </div>
           )}

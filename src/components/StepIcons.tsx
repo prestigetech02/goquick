@@ -48,3 +48,44 @@ export function IconPay() {
     </svg>
   );
 }
+
+/** Runner flow icons */
+export function IconVerify() {
+  return (
+    <svg className={iconClass} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+    </svg>
+  );
+}
+
+export function IconClock() {
+  return (
+    <svg className={iconClass} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  );
+}
+
+export function IconBell() {
+  return (
+    <svg className={iconClass} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+    </svg>
+  );
+}
+
+export function IconCheckCircle() {
+  return (
+    <svg className={iconClass} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  );
+}
+
+export function IconWallet() {
+  return (
+    <svg className={iconClass} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 01-2.25-2.25c0-1.152.26-2.243.723-3.218C14.767 2.41 13.42 1.5 12 1.5s-2.767.91-3.473 2.282C7.987 4.557 7.5 5.648 7.5 6.75A2.25 2.25 0 015.25 9H3a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 003 21.75h17.25A2.25 2.25 0 0022.5 19.5V9a2.25 2.25 0 00-2.25-2.25H18a2.25 2.25 0 01-2.25-2.25 2.25 2.25 0 00-2.25-2.25H12a2.25 2.25 0 00-2.25 2.25 2.25 2.25 0 01-2.25 2.25H7.5a2.25 2.25 0 01-2.25-2.25V6.75" />
+    </svg>
+  );
+}
