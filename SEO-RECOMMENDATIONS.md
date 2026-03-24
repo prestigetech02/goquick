@@ -15,20 +15,20 @@
 
 ## Optional on-site improvements (in codebase)
 
-1. **Dedicated OG image**  
-   Use a 1200×630 px image for sharing (e.g. logo + tagline). Add it under `public/` and reference it in `layout.tsx` instead of (or in addition to) the app icon so links look better on social and in some search results.
+1. **Dedicated OG image** ✅ Implemented  
+   A 1200×630 px image for sharing is referenced in `layout.tsx` as `og-image.png`. Add your image to `public/og-image.png` (see `public/ASSETS.md`). Fallback: `appicon.png`.
 
-2. **Blog in sitemap**  
-   If you have a blog API, extend `sitemap.ts` to fetch post slugs and add `/blog/[slug]` URLs with `lastModified` and lower `priority` so new content gets discovered quickly.
+2. **Blog in sitemap** ✅ Implemented  
+   `sitemap.ts` fetches blog post slugs from the API and adds `/blog/[slug]` entries with `lastModified` (from `updated_at` or `published_at`) and `priority` 0.6. Revalidates every 5 minutes.
 
-3. **LocalBusiness / Service schema**  
-   Add LocalBusiness (or Service) JSON-LD on the homepage or contact page with name, url, description, address, phone, areaServed (e.g. Lagos). Helps local/search relevance.
+3. **LocalBusiness / Service schema** ✅ Implemented  
+   Service JSON-LD on the homepage with name, url, description, telephone, email, areaServed (default "Lagos, Nigeria"). Optional: set `NEXT_PUBLIC_BUSINESS_ADDRESS` and `NEXT_PUBLIC_BUSINESS_AREA_SERVED` in env.
 
-4. **Article schema for blog posts**  
-   In `blog/[slug]/page.tsx`, add Article JSON-LD (headline, datePublished, dateModified, author, image) for each post to support article rich results.
+4. **Article schema for blog posts** ✅ Implemented  
+   Each `blog/[slug]` page includes Article JSON-LD (headline, datePublished, dateModified, author, image, publisher) for rich results.
 
 5. **Core Web Vitals**  
-   You’re on Next.js (Image, font optimization). Keep images sized and lazy-loaded; avoid large render-blocking scripts. Use Lighthouse and Search Console to monitor LCP, INP, CLS.
+   Next.js already provides Image optimization, font optimization, and code splitting. **What to do:** Keep using the Next.js `<Image>` component and `loading="lazy"` for images; avoid large render-blocking scripts; run **Lighthouse** (Chrome DevTools) and **Google Search Console → Core Web Vitals** to monitor LCP, INP, CLS. Fix any “Poor” or “Needs improvement” URLs.
 
 ---
 
@@ -72,8 +72,8 @@
 
 - [ ] `NEXT_PUBLIC_SITE_URL` set to production URL (e.g. `https://goquickapp.com.ng`).
 - [ ] Add and verify site in Google Search Console; submit sitemap.
-- [ ] (Optional) Create 1200×630 OG image and add to layout.
-- [ ] (Optional) Add LocalBusiness/Service schema if you want to stress local relevance.
+- [x] **OG image** — Layout already references `og-image.png` (1200×630). Add your image file to `public/og-image.png` (see `public/ASSETS.md`). Fallback: `appicon.png`.
+- [x] **LocalBusiness/Service schema** — Implemented on the homepage (`page.tsx`). Optional env: `NEXT_PUBLIC_BUSINESS_ADDRESS`, `NEXT_PUBLIC_BUSINESS_AREA_SERVED` (default: "Lagos, Nigeria").
 - [ ] After launch: request indexing for homepage and key pages in Search Console; monitor coverage and Core Web Vitals.
 
 Ranking “as soon as possible” still depends on indexing time, competition, and backlinks. Having a clean, crawlable site with good metadata and a sitemap (as you do now) puts you in a good position; the rest is submission, content, and off-site signals.

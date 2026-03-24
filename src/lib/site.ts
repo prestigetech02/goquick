@@ -29,6 +29,11 @@ export const siteConfig = {
     email: "support@goquickapp.com.ng",
     phone: "+234 (0) 906 906 3200",
   },
+  /** For LocalBusiness/Service schema (address optional; areaServed helps local SEO). */
+  business: {
+    address: process.env.NEXT_PUBLIC_BUSINESS_ADDRESS?.trim() || undefined,
+    areaServed: process.env.NEXT_PUBLIC_BUSINESS_AREA_SERVED?.trim() || "Lagos, Nigeria",
+  },
   /** Stats for the homepage stats block. Count-up animates from 0 to numericValue. */
   stats: [
     { numericValue: 10000, suffix: "+", label: "Errands completed", format: "compact" as const },

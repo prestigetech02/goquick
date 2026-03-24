@@ -24,7 +24,7 @@ export default function AboutPage() {
         {/* Hero: CTA-style container (same width as other About sections) */}
         <div className="mx-auto max-w-5xl">
           <section
-            className="relative overflow-hidden rounded-2xl px-4 py-0.5 sm:px-6 sm:py-1 md:px-10 md:py-2 lg:px-14 lg:py-2"
+            className="relative overflow-hidden rounded-2xl pt-6 px-4 py-0.5 sm:pt-1 sm:px-6 sm:py-1 md:px-10 md:py-2 lg:px-14 lg:py-2"
             style={{ backgroundColor: "var(--primary)" }}
             aria-labelledby="about-hero-heading"
           >

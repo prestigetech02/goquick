@@ -1,0 +1,40 @@
+# Nginx config for GoQuick landing (Next.js) - use with aaPanel
+# Replace the server block for goquickapp.com.ng with this (or merge into existing).
+# Ensure no other location serves from disk for / or /_next - all must go to Node.
+
+server {
+    listen 80;
+    server_name goquickapp.com.ng www.goquickapp.com.ng;
+
+    # Proxy ALL requests (including /_next/static/*) to the Next.js app on port 3002
+    location / {
+        proxy_pass http://127.0.0.1:3002;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# If you use SSL (Let's Encrypt in aaPanel), aaPanel will add:
+#   listen 443 ssl;
+#   ssl_certificate ...;
+#   ssl_certificate_key ...;
+# Keep the same location / block so all traffic still goes to 3002.
+
+# --- Alternative: static export (no Node) ---
+# When using output: 'export' and trailingSlash: true, serve the out/ folder. No proxy.
+# Ensures /about/, /careers/, etc. resolve to about/index.html, careers/index.html (avoids 403 on prefetch).
+# server {
+#     listen 80;
+#     server_name goquickapp.com.ng www.goquickapp.com.ng;
+#     root /www/wwwroot/goquickapp.com.ng;
+#     index index.html;
+#     location / {
+#         try_files $uri $uri/ /index.html;
+#     }
+# }

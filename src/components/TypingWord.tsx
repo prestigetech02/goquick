@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const WORDS = ["GoQuick", "Deliveries", "Queues", "Shopping"];
+const WORDS = ["Deliveries", "Queues", "Shopping", "Pick-Up", "Drop-off"];
 const TYPE_MS = 100;
 const PAUSE_MS = 2000;
 const DELETE_MS = 50;

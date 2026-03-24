@@ -77,7 +77,12 @@ export function CareerApplyModal({ isOpen, onClose, positionTitle }: CareerApply
       if (portfolioLink) payload.append("portfolioLink", portfolioLink);
       if (socialLink) payload.append("socialLink", socialLink);
 
-      const res = await fetch("/api/careers", {
+      const careersUrl =
+        typeof process.env.NEXT_PUBLIC_CAREERS_SUBMIT_URL === "string" &&
+        process.env.NEXT_PUBLIC_CAREERS_SUBMIT_URL.trim() !== ""
+          ? process.env.NEXT_PUBLIC_CAREERS_SUBMIT_URL.trim()
+          : "/api/careers";
+      const res = await fetch(careersUrl, {
         method: "POST",
         body: payload,
       });

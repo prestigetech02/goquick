@@ -5,6 +5,8 @@ Place these files in the `landing/public/` folder so images load correctly:
 | File | Used on |
 |------|--------|
 | `logo.png` | Header, Footer |
+| `appicon.png` | Favicon / site icon (browser tab, bookmarks) |
+| `og-image.png` | **Open Graph / social sharing** — 1200×630 px (e.g. logo + tagline). Used when the site is shared on social and in link previews. If missing, `appicon.png` is used as fallback. |
 | `appstore.jpg` | Home hero, CTA section, Footer (App Store badge) |
 | `playstore.png` | Home hero, CTA section, Footer (Google Play badge) |
 | `goquick-image.png` | Home about, CTA, About page (phone/app screenshot) |

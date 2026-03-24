@@ -35,6 +35,18 @@ export default function Home() {
     description: siteConfig.description,
   };
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: siteConfig.name,
+    url: siteConfig.siteUrl,
+    description: siteConfig.description,
+    ...(siteConfig.contact.phone && { telephone: siteConfig.contact.phone }),
+    ...(siteConfig.contact.email && { email: siteConfig.contact.email }),
+    areaServed: siteConfig.business.areaServed,
+    ...(siteConfig.business.address && { address: { "@type": "PostalAddress", addressLocality: siteConfig.business.address } }),
+  };
+
   return (
     <div className="min-h-screen min-w-0 bg-white text-slate-900">
       <Header />
@@ -67,10 +79,10 @@ export default function Home() {
             className="relative mx-auto grid w-full max-w-6xl gap-8 px-4 pb-4 pt-6 sm:grid-cols-2 sm:gap-12 sm:px-6 sm:pb-6 sm:pt-8 lg:px-10 md:gap-16 md:pb-8 md:pt-10"
           >
             <div className="flex flex-col justify-center gap-4 sm:gap-6">
-              <h1 className="text-2xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
+              <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
                 Got <TypingWord />?
               </h1>
-              <p className="text-xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-5xl">
+              <p className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-5xl">
                 Stop Wasting Time.
                 <br />
                 Get it done ASAP.
@@ -130,7 +142,7 @@ export default function Home() {
 
         <section
           id="about"
-          className="w-full min-w-0 pt-4 py-10 sm:pt-6 sm:py-14 md:pt-8 md:py-16"
+          className="w-full min-w-0 pt-10 py-10 sm:pt-6 sm:py-14 md:pt-8 md:py-16"
           style={{
             backgroundColor: "color-mix(in srgb, var(--primary) 8%, white)",
           }}
@@ -382,6 +394,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
     </div>
   );

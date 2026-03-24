@@ -5,6 +5,23 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/lib/site";
 
+// Required for "output: export" — must be exported and return at least one param set (Next.js 16).
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || "https://api.goquickapp.com.ng/v1";
+  try {
+    const res = await fetch(`${apiBase}/blog/posts?per_page=100`, { cache: "no-store" });
+    if (!res.ok) return [{ slug: "_" }];
+    const json = await res.json();
+    const posts = json?.data?.posts ?? [];
+    if (posts.length === 0) return [{ slug: "_" }];
+    return posts.map((p: { slug: string }) => ({ slug: p.slug }));
+  } catch {
+    return [{ slug: "_" }];
+  }
+}
+
+export const dynamic = "force-static";
+
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || "https://api.goquickapp.com.ng/v1";
 
 type PostData = {
@@ -73,15 +90,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
+  if (slug === "_") notFound();
   const res = await getPost(slug);
   const post = res?.data;
 
   if (!post) notFound();
 
   const imgSrc = postImageSrc(post.image);
+  const canonicalUrl = `${siteConfig.siteUrl.replace(/\/$/, "")}/blog/${post.slug}`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt || undefined,
+    url: canonicalUrl,
+    datePublished: post.published_at || undefined,
+    dateModified: post.published_at || undefined,
+    ...(post.author?.name && { author: { "@type": "Person", name: post.author.name } }),
+    ...(imgSrc && { image: imgSrc }),
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.siteUrl },
+  };
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <Header />
 
       <main className="mx-auto min-h-[60vh] w-full max-w-3xl px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-10">
