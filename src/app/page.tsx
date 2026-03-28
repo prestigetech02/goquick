@@ -3,9 +3,9 @@ import Image from "next/image";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { HeroStoreButtons, WaitlistButton } from "@/components/HeroStoreButtons";
 import { ServiceCards } from "@/components/ServiceCards";
 import { StatsBlock } from "@/components/StatsBlock";
-import { StoreButton } from "@/components/StoreButton";
 import {
   IconChat,
   IconCreate,
@@ -16,9 +16,6 @@ import {
 } from "@/components/StepIcons";
 import { TypingWord } from "@/components/TypingWord";
 import { siteConfig } from "@/lib/site";
-
-const APP_STORE_URL = "https://apps.apple.com/app/goquick/id";
-const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.goquick.app";
 
 export const metadata: Metadata = {
   title: "Book Reliable Runners For Everyday Tasks",
@@ -91,38 +88,7 @@ export default function Home() {
                 Get errands done fast. Grocery shopping, deliveries, queues and
                 more, right here in Lagos.
               </p>
-              <div className="flex flex-wrap gap-3 sm:gap-4">
-                <a
-                  className="inline-block transition hover:opacity-90"
-                  href={APP_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Download on the App Store"
-                >
-                  <Image
-                    src="/appstore.jpg"
-                    alt="Download on the App Store"
-                    width={160}
-                    height={56}
-                    className="h-7 w-auto object-contain sm:h-9 md:h-10"
-                  />
-                </a>
-                <a
-                  className="inline-block transition hover:opacity-90"
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Get it on Google Play"
-                >
-                  <Image
-                    src="/playstore.png"
-                    alt="Get it on Google Play"
-                    width={160}
-                    height={56}
-                    className="h-7 w-auto object-contain sm:h-9 md:h-10"
-                  />
-                </a>
-              </div>
+              <HeroStoreButtons />
             </div>
             <div className="relative flex items-center justify-center">
               <Image
@@ -321,9 +287,9 @@ export default function Home() {
               <p className="font-medium text-slate-800">
                 Join one of the fastest growing errand and delivery partner networks in your city.
               </p>
-              <StoreButton className="inline-block w-fit rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base">
+              <WaitlistButton className="inline-block w-fit rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base">
                 Become a Runner
-              </StoreButton>
+              </WaitlistButton>
             </div>
           </div>
         </section>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type ReactElement, useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
 type NavLink = { label: string; href: string };
 type NavMegaItem = { label: string; href: string; description: string; icon: "building" | "briefcase" | "document" | "steps" | "question" | "support" };
@@ -193,6 +194,7 @@ export function Header() {
   const [activeId, setActiveId] = useState<string>("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -376,15 +378,14 @@ export function Header() {
         </nav>
 
         <div className="flex shrink-0 items-center justify-end gap-3">
-          <a
+          <button
+            type="button"
+            onClick={() => setWaitlistOpen(true)}
             className="hidden rounded-lg px-5 py-2.5 text-sm font-medium text-white transition-colors hover:opacity-95 md:inline-block"
-            href={siteConfig.appDownloadUrl ?? "/"}
-            style={{
-              backgroundColor: "var(--primary)",
-            }}
+            style={{ backgroundColor: "var(--primary)" }}
           >
             Get GoQuick
-          </a>
+          </button>
           <button
             type="button"
             className={`flex h-9 w-9 items-center justify-center rounded-lg text-slate-900 dark:text-slate-200 transition-colors hover:bg-slate-100 md:hidden sm:h-10 sm:w-10 ${drawerOpen ? "hidden" : ""}`}
@@ -463,16 +464,17 @@ export function Header() {
           })}
         </nav>
         <div className="shrink-0 border-t border-slate-200 p-4">
-          <a
+          <button
+            type="button"
             className="block w-full rounded-lg px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:opacity-95 sm:py-3"
-            href={siteConfig.appDownloadUrl ?? "/"}
             style={{ backgroundColor: "var(--primary)" }}
-            onClick={closeDrawer}
+            onClick={() => { closeDrawer(); setWaitlistOpen(true); }}
           >
             Get GoQuick
-          </a>
+          </button>
         </div>
       </div>
+      <WaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
     </header>
   );
 }

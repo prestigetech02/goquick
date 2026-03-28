@@ -1,11 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/lib/site";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
-const APP_STORE_URL = "https://apps.apple.com/app/goquick/id";
-const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.goquick.app";
 
 export function CTASection() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
+    <>
+    <WaitlistModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     <div className="px-4 sm:px-6 lg:px-10 -mt-6 sm:-mt-8 md:-mt-10">
       <section
         className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl px-4 py-1 sm:px-6 sm:py-2 md:px-10 md:py-2 lg:px-14 lg:py-3 mb-10 sm:mb-12 md:mb-14"
@@ -38,13 +44,11 @@ export function CTASection() {
             Book trusted runners for pickups, deliveries, and daily tasks. Save time, get it done.
           </p>
           <div className="flex flex-wrap gap-3 sm:gap-4">
-            <a
+            <button
+              onClick={() => setModalOpen(true)}
               className="inline-block overflow-hidden transition hover:opacity-90"
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label="Download on the App Store"
-              style={{ borderRadius: "6px" }}
+              style={{ borderRadius: "6px", background: "none", border: "none", padding: 0, cursor: "pointer" }}
             >
               <Image
                 src="/appstore.jpg"
@@ -53,13 +57,12 @@ export function CTASection() {
                 height={56}
                 className="h-8 w-auto object-contain sm:h-11 md:h-12"
               />
-            </a>
-            <a
+            </button>
+            <button
+              onClick={() => setModalOpen(true)}
               className="inline-block transition hover:opacity-90"
-              href={PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label="Get it on Google Play"
+              style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
             >
               <Image
                 src="/playstore.png"
@@ -68,7 +71,7 @@ export function CTASection() {
                 height={56}
                 className="h-8 w-auto object-contain sm:h-11 md:h-12"
               />
-            </a>
+            </button>
           </div>
         </div>
 
@@ -88,5 +91,6 @@ export function CTASection() {
         </div>
       </section>
     </div>
+    </>
   );
 }
