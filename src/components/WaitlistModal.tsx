@@ -10,6 +10,8 @@ type WaitlistModalProps = {
 
 type Status = "idle" | "loading" | "success" | "error";
 type JoinRole = "runner" | "requester";
+const WAITLIST_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbyhl4U8npiwSAtrU6MlGHj1Wh4AtXWfbdxfqVcqYmqrKVvtIc1P_iE9_zWCEsWWkEZuMg/exec";
 
 export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [email, setEmail] = useState("");
@@ -69,23 +71,38 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed, role }),
-      });
-      const json = await res.json();
+      const payload = {
+        email: trimmed,
+        role,
+        submittedAt: new Date().toISOString(),
+      };
 
-      if (!res.ok) {
-        setStatus("error");
-        setErrorMessage(json.error ?? "Something went wrong. Please try again.");
-        return;
+      try {
+        const res = await fetch(WAITLIST_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const message = await res.text().catch(() => "");
+          throw new Error(message || `Webhook failed with ${res.status}`);
+        }
+      } catch {
+        // Fallback for strict cross-origin setups: send as no-cors fire-and-forget.
+        // In no-cors mode, response details are opaque, so success here means request dispatched.
+        await fetch(WAITLIST_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify(payload),
+        });
       }
 
       setStatus("success");
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setErrorMessage("Unable to submit waitlist right now. Please try again.");
     }
   }
 
