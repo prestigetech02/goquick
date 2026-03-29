@@ -8,7 +8,9 @@ const ROLE_VALUES = new Set(["runner", "requester"]);
 // Waitlist persisted to a local JSON file under the project root (outside public/).
 // On a real deployment you'd point this to a database or external service.
 const DATA_PATH = path.join(process.cwd(), "waitlist.json");
-const WAITLIST_SHEETS_WEBHOOK_URL = process.env.WAITLIST_SHEETS_WEBHOOK_URL;
+const WAITLIST_SHEETS_WEBHOOK_URL =
+  process.env.WAITLIST_SHEETS_WEBHOOK_URL ||
+  "https://script.google.com/macros/s/AKfycbyhl4U8npiwSAtrU6MlGHj1Wh4AtXWfbdxfqVcqYmqrKVvtIc1P_iE9_zWCEsWWkEZuMg/exec";
 
 type JoinRole = "runner" | "requester";
 type WaitlistEntry = {
