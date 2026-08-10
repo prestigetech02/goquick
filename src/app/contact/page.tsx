@@ -16,7 +16,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-white text-slate-900">
       <Header />
 
-      <main className="mx-auto flex min-h-[60vh] w-full max-w-5xl flex-col gap-10 px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-10">
+      <main className="site-container flex min-h-[60vh] flex-col gap-10 pb-16 pt-28 sm:pt-32">
         <section aria-labelledby="contact-heading" className="space-y-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
             Contact Us
@@ -82,7 +82,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Support hours</p>
-                <p>Monday – Friday, 8:00am – 6:00pm (WAT)</p>
+                <p>Monday to Friday, 8:00am to 6:00pm (WAT)</p>
               </div>
             </div>
             <div className="text-base">

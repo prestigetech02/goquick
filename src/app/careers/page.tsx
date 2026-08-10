@@ -5,7 +5,7 @@ import { CareersPageContent } from "./CareersPageContent";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join GoQuick. We're building the go-to platform for errands and deliveries. See open roles and join our team.",
+    "Join GoQuick. We're building the platform for errands and deliveries. See open roles and join our team.",
   alternates: { canonical: "/careers" },
 };
 
@@ -15,21 +15,21 @@ const openPositions = [
   {
     title: "Software Engineer",
     department: "Engineering",
-    type: "Full-time",
+    type: "Full time",
     location: "Lagos (Hybrid)",
     description: "Build and improve the GoQuick app and platform that connects users with runners.",
   },
   {
     title: "Operations Associate",
     department: "Operations",
-    type: "Full-time",
+    type: "Full time",
     location: "Lagos",
-    description: "Help scale our runner network and ensure smooth day-to-day operations.",
+    description: "Help scale our runner network and keep daily operations running smoothly.",
   },
   {
     title: "Customer Support",
     department: "Support",
-    type: "Full-time",
+    type: "Full time",
     location: "Lagos",
     description: "Support our users and runners and help resolve issues quickly.",
   },

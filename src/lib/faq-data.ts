@@ -10,20 +10,20 @@ export const DEFAULT_FAQS: FAQItem[] = [
   {
     question: "What kind of errands can I get done with GoQuick?",
     answer:
-      "You can use GoQuick for grocery shopping, food and package delivery, queue services (e.g. paying bills, bank errands), pickups and drop-offs, and other everyday tasks. Create an errand with details and budget, and nearby runners will accept the job.",
+      "You can use GoQuick for grocery shopping, food and package delivery, queue services (e.g. paying bills, bank errands), pickups and dropoffs, and other everyday tasks. Create an errand with details and budget, and nearby runners will accept the job.",
     category: "requesters",
   },
   {
     question: "How do I pay for an errand?",
     category: "payments",
     answer:
-      "Payment is handled securely inside the app. You add a payment method, and the agreed amount is held safely until the errand is completed. You only pay when you're satisfied with the result. We support cards and other methods via our payment partners.",
+      "Payment is handled securely in your GoQuick account. You add a payment method, and the agreed amount is held safely until the errand is completed. You only pay when you're satisfied with the result. We support cards and other methods via our payment partners.",
   },
   {
     question: "Where does GoQuick operate?",
     category: "service",
     answer:
-      "GoQuick currently operates in Lagos. We're expanding to more cities. Check the app or contact us for the latest service areas.",
+      "GoQuick currently operates in Lagos. We're expanding to more cities. Check the web app or contact us for the latest service areas.",
   },
   {
     question: "How do I become a runner and earn money?",
@@ -40,7 +40,7 @@ export const DEFAULT_FAQS: FAQItem[] = [
   {
     question: "Can I track my errand in real time?",
     answer:
-      "Yes. Once a runner accepts your errand, you can follow progress in the app and message them directly if you need to share or clarify anything.",
+      "Yes. Once a runner accepts your errand, you can follow progress on the web and message them directly if you need to share or clarify anything.",
     category: "requesters",
   },
 ];

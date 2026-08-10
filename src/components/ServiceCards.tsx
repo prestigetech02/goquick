@@ -16,7 +16,7 @@ const services = [
   { icon: Clock01Icon, title: "Queue Standing" },
   { icon: DeliveryTruck01Icon, title: "Pickup & Delivery" },
   { icon: Medicine01Icon, title: "Pharmacy Runs" },
-  { icon: LegalDocument01Icon, title: "Document Drop-Offs" },
+  { icon: LegalDocument01Icon, title: "Document Delivery" },
   { icon: MagicWand01Icon, title: "Custom Errands" },
 ];
 

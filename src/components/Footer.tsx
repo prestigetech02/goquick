@@ -9,15 +9,14 @@ import {
 } from "@hugeicons/core-free-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
-
-const APP_STORE_URL = "https://apps.apple.com/app/goquick/id";
-const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.goquick.app";
+import { RequestErrandButton, RunnerStoreBadges } from "@/components/HeroStoreButtons";
+import { Container } from "@/components/Container";
+import { siteConfig, webAppLinks } from "@/lib/site";
 
 const quickLinks = [
   { label: "Features", href: "/#services" },
   { label: "For Runners", href: "/#for-runners" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Pricing", href: "/pricing" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "About Us", href: "/about" },
   { label: "Careers", href: "/careers" },
@@ -66,7 +65,7 @@ export function Footer() {
 
   return (
     <footer className="bg-slate-900 text-white">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-10">
+      <Container className="py-12 sm:py-14">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Column 1: Company */}
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
@@ -128,7 +127,7 @@ export function Footer() {
             ))}
           </FooterColumn>
 
-          {/* Column 4: Contact + Download App */}
+          {/* Column 4: Contact + requester / runner CTAs */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
               Contact
@@ -163,43 +162,30 @@ export function Footer() {
                 {siteConfig.contact.phone}
               </p>
             </div>
-            <div className="pt-2">
-              <p className="mb-3 text-sm font-semibold text-white">
-                Download App
-              </p>
-              <div className="flex flex-nowrap items-center gap-2">
-                <a
-                  href={APP_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shrink-0 overflow-hidden rounded bg-black transition hover:opacity-90"
-                  style={{ borderRadius: "4px" }}
-                  aria-label="Download on the App Store"
-                >
-                  <Image
-                    src="/appstore.jpg"
-                    alt="Download on the App Store"
-                    width={120}
-                    height={36}
-                    className="h-7 w-auto object-contain sm:h-9"
-                  />
-                </a>
-                <a
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shrink-0 overflow-hidden rounded bg-black transition hover:opacity-90"
-                  style={{ borderRadius: "4px" }}
-                  aria-label="Get it on Google Play"
-                >
-                  <Image
-                    src="/playstore.png"
-                    alt="Get it on Google Play"
-                    width={120}
-                    height={36}
-                    className="h-7 w-auto object-contain sm:h-9"
-                  />
-                </a>
+            <div className="pt-2 space-y-4">
+              <div>
+                <p className="mb-3 text-sm font-semibold text-white">
+                  Request an errand
+                </p>
+                <RequestErrandButton className="inline-flex w-full items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-95 sm:w-auto" />
+                <p className="mt-2 text-xs text-slate-400">
+                  Already have an account?{" "}
+                  <a
+                    href={webAppLinks.signIn()}
+                    className="font-medium text-slate-300 underline-offset-2 hover:text-white hover:underline"
+                  >
+                    Sign in
+                  </a>
+                </p>
+              </div>
+              <div>
+                <p className="mb-3 text-sm font-semibold text-white">
+                  Download runner app
+                </p>
+                <RunnerStoreBadges
+                  className="flex flex-nowrap items-center gap-2"
+                  imageClassName="h-7 w-auto object-contain sm:h-9"
+                />
               </div>
             </div>
           </div>
@@ -211,7 +197,7 @@ export function Footer() {
             © {year} {siteConfig.name}. All rights reserved.
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

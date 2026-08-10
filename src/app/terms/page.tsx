@@ -63,7 +63,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-slate-900">4. Description of Services</h2>
             <p className="mt-2 text-slate-600">
               GoQuick connects users who need errands, deliveries, or other tasks with runners who can perform them.
-              We provide the platform, matching, in-app communication, and payment processing. We do not employ
+              We provide the platform, matching, communication in the app, and payment processing. We do not employ
               runners; they are independent. The nature, quality, and timing of tasks are agreed between you and
               the runner, subject to these Terms and our policies. Service availability may vary by location.
             </p>
@@ -79,7 +79,7 @@ export default function TermsPage() {
               <li>Request or facilitate delivery of prohibited or restricted items (e.g. illegal substances, hazardous materials).</li>
               <li>Harass, abuse, or harm other users or runners, or our staff.</li>
               <li>Impersonate others or provide false information.</li>
-              <li>Circumvent the app to arrange or pay for errands off-platform to avoid fees or safety measures.</li>
+              <li>Circumvent the app to arrange or pay for errands outside the platform to avoid fees or safety measures.</li>
               <li>Interfere with the operation of the app, systems, or other users&apos; use.</li>
               <li>Scrape data, reverse engineer, or attempt to gain unauthorised access to our systems or data.</li>
             </ul>
@@ -113,7 +113,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-slate-900">8. Disclaimers</h2>
             <p className="mt-2 text-slate-600">
               Our services are provided &quot;as is&quot; and &quot;as available&quot;. We do not guarantee uninterrupted or
-              error-free service. We are not responsible for the actions, quality, or conduct of runners or other
+              error free service. We are not responsible for the actions, quality, or conduct of runners or other
               users, or for the quality, legality, or safety of items or tasks. You use the platform and interact with
               runners at your own risk. Nothing in these Terms excludes or limits our liability where it would be
               unlawful to do so (e.g. death or personal injury caused by our negligence, or fraud).
@@ -138,7 +138,7 @@ export default function TermsPage() {
               You agree to indemnify and hold harmless {siteConfig.name}, its affiliates, and their respective
               officers, directors, employees, and agents from any claims, damages, losses, or expenses (including
               legal fees) arising from your use of the service, your violation of these Terms, or your
-              violation of any third-party rights.
+              violation of any third party rights.
             </p>
           </section>
 
@@ -156,7 +156,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-slate-900">12. Disputes and Governing Law</h2>
             <p className="mt-2 text-slate-600">
               These Terms are governed by the laws of Nigeria. Any dispute arising from or relating to these Terms
-              or the service shall first be addressed through good-faith negotiation. If that fails, disputes may
+              or the service shall first be addressed through good faith negotiation. If that fails, disputes may
               be submitted to the courts of Nigeria. If you are a consumer, you may have rights under local
               consumer protection laws that cannot be waived by these Terms.
             </p>

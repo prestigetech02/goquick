@@ -49,7 +49,7 @@ export function FAQ({ items = DEFAULT_FAQS, showHeading = true }: { items?: FAQI
 
   return (
     <section id="faq" className="w-full min-w-0 py-12 sm:py-16 md:py-20">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-10">
+      <div className="mx-auto grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12">
         {/* Left: General help section */}
         <div className="flex flex-col space-y-6 sm:space-y-8">
           {showHeading && (

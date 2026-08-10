@@ -5,6 +5,21 @@
   --foreground: #171717;
   --primary: #308030;
   --primary-hover: #286828;
+  /* Shared layout width + equal side gutters */
+  --site-max-width: 80rem; /* ~max-w-7xl */
+  --site-gutter: 1.25rem; /* 20px */
+}
+
+@media (min-width: 640px) {
+  :root {
+    --site-gutter: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-gutter: 2rem; /* 32px */
+  }
 }
 
 @theme inline {
@@ -37,4 +52,126 @@ body {
 .nav-link-active {
   color: var(--primary);
   border-bottom: 2px solid var(--primary);
+}
+
+/* Uniform page/section shell — equal left/right gutters */
+.site-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--site-max-width);
+  min-width: 0;
+  margin-inline: auto;
+  padding-inline: var(--site-gutter);
+}
+
+@keyframes careers-hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.careers-hero-fade {
+  animation: careers-hero-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pricing-hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pricing-hero-fade {
+  animation: pricing-hero-fade 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .careers-hero-fade,
+  .pricing-hero-fade {
+    animation: none;
+  }
+
+  .btn-fluid .btn-fluid-blob {
+    transition: none;
+  }
+}
+
+/* Fluid fill hover for hero CTAs */
+.btn-fluid {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-fluid .btn-fluid-blob {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  z-index: 0;
+  width: 220%;
+  height: 220%;
+  border-radius: 42% 48% 40% 46%;
+  transform: translateX(-50%);
+  transition:
+    top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.55s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn-fluid:hover .btn-fluid-blob,
+.btn-fluid:focus-visible .btn-fluid-blob {
+  top: -60%;
+  border-radius: 46% 40% 48% 42%;
+  transform: translateX(-50%) rotate(25deg);
+}
+
+.btn-fluid .btn-fluid-content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+}
+
+.btn-fluid-primary {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+
+.btn-fluid-primary .btn-fluid-blob {
+  background: #1e5a1e;
+}
+
+.btn-fluid-primary:hover,
+.btn-fluid-primary:focus-visible {
+  color: #fff;
+}
+
+.btn-fluid-secondary {
+  background: #fff !important;
+  color: #1e293b !important;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.btn-fluid-secondary .btn-fluid-blob {
+  background: var(--primary);
+}
+
+.btn-fluid-secondary:hover,
+.btn-fluid-secondary:focus-visible {
+  color: #fff !important;
+  border-color: var(--primary) !important;
 }

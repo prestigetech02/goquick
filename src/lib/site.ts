@@ -1,4 +1,5 @@
 const fallbackSiteUrl = "https://goquickapp.com.ng";
+const fallbackWebAppUrl = "https://app.goquickapp.com.ng";
 
 function normalizeSiteUrl(url: string): string {
   return url.endsWith("/") ? url.slice(0, -1) : url;
@@ -11,11 +12,23 @@ export const siteConfig = {
   siteUrl: normalizeSiteUrl(
     process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallbackSiteUrl,
   ),
+  /** Buyer web app — requesters use this instead of the mobile store. */
+  webAppUrl: normalizeSiteUrl(
+    process.env.NEXT_PUBLIC_WEB_APP_URL?.trim() || fallbackWebAppUrl,
+  ),
   apiBaseUrl:
     process.env.NEXT_PUBLIC_API_BASE_URL?.trim() ||
-    "https://api.goquickapp.com.ng/v1",
+    "https://api.goquickapp.com.ng/api/v1",
   appDownloadUrl:
     process.env.NEXT_PUBLIC_APP_DOWNLOAD_URL?.trim() || "/",
+  stores: {
+    appStore:
+      process.env.NEXT_PUBLIC_APP_STORE_URL?.trim() ||
+      "https://apps.apple.com/app/goquick/id",
+    playStore:
+      process.env.NEXT_PUBLIC_PLAY_STORE_URL?.trim() ||
+      "https://play.google.com/store/apps/details?id=com.goquick.app",
+  },
   social: {
     twitterHandle: "@goquickapp",
     whatsapp: process.env.NEXT_PUBLIC_SOCIAL_WHATSAPP?.trim() || "#",
@@ -41,3 +54,11 @@ export const siteConfig = {
     { numericValue: 500, suffix: "+", label: "Errand requesters", format: "number" as const },
   ],
 };
+
+/** Web app paths for requester CTAs */
+export const webAppLinks = {
+  home: () => siteConfig.webAppUrl,
+  getStarted: () => `${siteConfig.webAppUrl}/signup`,
+  signIn: () => `${siteConfig.webAppUrl}/login`,
+  requestErrand: () => `${siteConfig.webAppUrl}/signup`,
+} as const;

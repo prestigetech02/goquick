@@ -156,7 +156,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               </div>
               <h2 className="text-xl font-extrabold text-slate-900">You're on the list!</h2>
               <p className="text-sm text-slate-500">
-                We'll send you a heads-up the moment GoQuick lands in the stores.
+                We'll send you a heads up the moment GoQuick lands in the stores.
                 Keep an eye on your inbox.
               </p>
               <button

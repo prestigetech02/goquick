@@ -8,7 +8,7 @@ import { DEFAULT_FAQS } from "@/lib/faq-data";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Frequently asked questions about GoQuick: errands, payments, becoming a runner, service areas, and real-time tracking.",
+    "Frequently asked questions about GoQuick: errands, payments, becoming a runner, service areas, and live tracking.",
   alternates: { canonical: "/faq" },
 };
 
@@ -30,7 +30,7 @@ export default function FAQPage() {
     <div className="min-h-screen bg-white text-slate-900">
       <Header />
 
-      <main className="mx-auto min-h-[60vh] w-full max-w-6xl px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-10">
+      <main className="site-container min-h-[60vh] pb-16 pt-28 sm:pt-32">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

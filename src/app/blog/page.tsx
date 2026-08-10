@@ -72,7 +72,7 @@ export default async function BlogPage() {
     <div className="min-h-screen bg-white text-slate-900">
       <Header />
 
-      <main className="mx-auto min-h-[60vh] w-full max-w-6xl px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-10">
+      <main className="site-container min-h-[60vh] pb-16 pt-28 sm:pt-32">
         <section aria-labelledby="blog-heading" className="mb-10 sm:mb-12">
           <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
             Blog

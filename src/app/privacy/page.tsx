@@ -50,7 +50,7 @@ export default function PrivacyPage() {
               <li><strong className="text-slate-800">Account information:</strong> name, email address, phone number, and profile details when you register.</li>
               <li><strong className="text-slate-800">Location data:</strong> to match you with nearby runners, show delivery progress, and improve service areas.</li>
               <li><strong className="text-slate-800">Transaction and payment information:</strong> payment method details, transaction history, and billing information processed through our payment partners.</li>
-              <li><strong className="text-slate-800">Errand and communication data:</strong> errand descriptions, instructions, in-app messages, and support correspondence.</li>
+              <li><strong className="text-slate-800">Errand and communication data:</strong> errand descriptions, instructions, messages in the app, and support correspondence.</li>
               <li><strong className="text-slate-800">Device and usage data:</strong> device type, operating system, app version, and how you use the app (e.g. features used, session length).</li>
             </ul>
           </section>

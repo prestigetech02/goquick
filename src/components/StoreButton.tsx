@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const APP_STORE_URL = "https://apps.apple.com/app/goquick/id";
-const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.goquick.app";
+import { siteConfig } from "@/lib/site";
 
 function getStoreUrl(): string {
-  if (typeof navigator === "undefined") return PLAY_STORE_URL;
+  if (typeof navigator === "undefined") return siteConfig.stores.playStore;
   const ua = navigator.userAgent;
   const isIOS =
     /iPad|iPhone|iPod/.test(ua) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  return isIOS ? APP_STORE_URL : PLAY_STORE_URL;
+  return isIOS ? siteConfig.stores.appStore : siteConfig.stores.playStore;
 }
 
 type StoreButtonProps = Omit<
@@ -21,8 +19,9 @@ type StoreButtonProps = Omit<
   children: React.ReactNode;
 };
 
+/** Platform-aware store link for runners (mobile app). */
 export function StoreButton({ children, className, style, ...rest }: StoreButtonProps) {
-  const [href, setHref] = useState(PLAY_STORE_URL);
+  const [href, setHref] = useState(siteConfig.stores.playStore);
 
   useEffect(() => {
     setHref(getStoreUrl());
