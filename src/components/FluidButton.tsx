@@ -3,7 +3,7 @@
 import { useEffect, useState, type AnchorHTMLAttributes, type ReactNode } from "react";
 import { siteConfig, webAppLinks } from "@/lib/site";
 
-type FluidVariant = "primary" | "secondary";
+type FluidVariant = "primary" | "secondary" | "light" | "outlineLight";
 
 type FluidButtonProps = {
   href: string;
@@ -20,12 +20,17 @@ const sizeClasses =
 const variantClasses: Record<FluidVariant, string> = {
   primary: "btn-fluid-primary py-0 pl-5 pr-1.5 sm:pl-6 sm:pr-2",
   secondary: "btn-fluid-secondary border border-slate-300 px-5 sm:px-6",
+  light: "btn-fluid-light py-0 pl-5 pr-1.5 sm:pl-6 sm:pr-2",
+  outlineLight: "btn-fluid-outline-light px-5 sm:px-6",
 };
 
-function ArrowCircle() {
+function ArrowCircle({ tone = "dark" }: { tone?: "dark" | "brand" }) {
   return (
     <span
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1e5a1e] transition group-hover:translate-x-0.5 sm:h-9 sm:w-9"
+      className={[
+        "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition group-hover:translate-x-0.5 sm:h-9 sm:w-9",
+        tone === "brand" ? "bg-[var(--primary)]" : "bg-[#1e5a1e]",
+      ].join(" ")}
       aria-hidden
     >
       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -70,7 +75,7 @@ export function FluidButton({
       <span className="btn-fluid-blob" aria-hidden />
       <span className={`btn-fluid-content${showArrow ? " gap-2.5" : ""}`}>
         <span>{children}</span>
-        {showArrow ? <ArrowCircle /> : null}
+        {showArrow ? <ArrowCircle tone={variant === "light" ? "brand" : "dark"} /> : null}
       </span>
     </a>
   );
@@ -106,13 +111,23 @@ export function FluidStoreButton({
 }
 
 /** Homepage hero CTA pair: Book an Errand + Become a Runner */
-export function HeroCtaButtons({ className = "" }: { className?: string }) {
+export function HeroCtaButtons({
+  className = "",
+  tone = "default",
+}: {
+  className?: string;
+  /** Use light buttons on green / dark brand backgrounds */
+  tone?: "default" | "onBrand";
+}) {
+  const primaryVariant = tone === "onBrand" ? "light" : "primary";
+  const secondaryVariant = tone === "onBrand" ? "outlineLight" : "secondary";
+
   return (
     <div className={`flex flex-wrap items-center gap-3 sm:gap-4 ${className}`.trim()}>
-      <FluidButton href={webAppLinks.requestErrand()} variant="primary" showArrow>
+      <FluidButton href={webAppLinks.requestErrand()} variant={primaryVariant} showArrow>
         Book an Errand
       </FluidButton>
-      <FluidStoreButton variant="secondary">Become a Runner</FluidStoreButton>
+      <FluidStoreButton variant={secondaryVariant}>Become a Runner</FluidStoreButton>
     </div>
   );
 }

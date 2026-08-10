@@ -25,7 +25,7 @@ function getSectionIdFromHref(href: string): string | null {
 const navItems: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "For Runners", href: "/#for-runners" },
   { label: "Pricing", href: "/pricing" },
   { label: "Help", href: "/faq" },

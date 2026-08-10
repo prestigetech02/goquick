@@ -3,10 +3,21 @@ import { Container } from "@/components/Container";
 import { HeroCtaButtons } from "@/components/FluidButton";
 import { siteConfig } from "@/lib/site";
 
-export function GetStartedCta() {
+type GetStartedCtaProps = {
+  /** Navy (default / homepage) or app green */
+  variant?: "default" | "green";
+  className?: string;
+};
+
+export function GetStartedCta({ variant = "default", className = "" }: GetStartedCtaProps) {
+  const isGreen = variant === "green";
+
   return (
-    <Container as="section" aria-labelledby="get-started-cta-heading">
-      <div className="relative overflow-visible rounded-2xl bg-[#070b1a] sm:rounded-3xl">
+    <Container as="section" aria-labelledby="get-started-cta-heading" className={className}>
+      <div
+        className="relative overflow-visible rounded-2xl sm:rounded-3xl"
+        style={{ backgroundColor: isGreen ? "var(--primary)" : "#070b1a" }}
+      >
         {/* Clipped backgrounds — figure overflows above via reduced card top padding */}
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl"
@@ -45,8 +56,9 @@ export function GetStartedCta() {
           <div
             className="absolute right-[-2%] bottom-[6%] h-36 w-36 opacity-60 sm:h-44 sm:w-44"
             style={{
-              backgroundImage:
-                "radial-gradient(circle, color-mix(in srgb, var(--primary) 70%, white) 1.3px, transparent 1.4px)",
+              backgroundImage: isGreen
+                ? "radial-gradient(circle, rgba(255,255,255,0.5) 1.3px, transparent 1.4px)"
+                : "radial-gradient(circle, color-mix(in srgb, var(--primary) 70%, white) 1.3px, transparent 1.4px)",
               backgroundSize: "16px 16px",
               maskImage: "radial-gradient(circle, black 40%, transparent 75%)",
               WebkitMaskImage: "radial-gradient(circle, black 40%, transparent 75%)",
@@ -76,7 +88,7 @@ export function GetStartedCta() {
             <p className="max-w-md text-sm font-normal text-white/70 sm:text-base">
               Join thousands of people who save time with {siteConfig.name} every day.
             </p>
-            <HeroCtaButtons />
+            <HeroCtaButtons tone={isGreen ? "onBrand" : "default"} />
           </div>
 
           <div className="relative z-10 flex min-h-[220px] items-end justify-center px-4 sm:min-h-[260px] lg:min-h-0 lg:justify-end lg:px-4 lg:pr-6">

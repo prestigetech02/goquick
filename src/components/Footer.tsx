@@ -14,7 +14,7 @@ import { Container } from "@/components/Container";
 import { siteConfig, webAppLinks } from "@/lib/site";
 
 const quickLinks = [
-  { label: "Features", href: "/#services" },
+  { label: "Features", href: "/services" },
   { label: "For Runners", href: "/#for-runners" },
   { label: "Pricing", href: "/pricing" },
   { label: "How It Works", href: "/how-it-works" },
@@ -26,8 +26,8 @@ const quickLinks = [
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
-  { label: "Security", href: "/#services" },
-  { label: "Compliance", href: "/#services" },
+  { label: "Security", href: "/services" },
+  { label: "Compliance", href: "/services" },
 ];
 
 const socialLinks = [

@@ -9,6 +9,8 @@ const STATIC_PAGES: { url: string; changeFrequency: "weekly" | "monthly" | "year
   { url: "contact", changeFrequency: "monthly", priority: 0.9 },
   { url: "careers", changeFrequency: "weekly", priority: 0.9 },
   { url: "how-it-works", changeFrequency: "monthly", priority: 0.9 },
+  { url: "services", changeFrequency: "monthly", priority: 0.9 },
+  { url: "pricing", changeFrequency: "monthly", priority: 0.9 },
   { url: "faq", changeFrequency: "monthly", priority: 0.9 },
   { url: "blog", changeFrequency: "weekly", priority: 0.8 },
   { url: "privacy", changeFrequency: "yearly", priority: 0.4 },
