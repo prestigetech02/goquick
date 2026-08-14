@@ -122,16 +122,16 @@ export default function HowItWorksPage() {
         >
           <div className="min-w-0">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-[var(--primary)]">
-              How it works
-            </p>
-            <h1
-              id="how-heading"
+            How it works
+          </p>
+          <h1
+            id="how-heading"
               className="mt-3 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
-            >
+          >
               Moving made
               <br />
               <span style={{ color: "var(--primary)" }}>simple.</span>
-            </h1>
+          </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-slate-600 sm:mt-5 sm:text-lg">
               {siteConfig.name} connects you with trusted runners to get your errands
               done—fast, safe, and stress-free.
@@ -193,7 +193,7 @@ export default function HowItWorksPage() {
               >
                 Here&apos;s how <span style={{ color: "var(--primary)" }}>{siteConfig.name}</span> works
               </h2>
-            </div>
+          </div>
 
             <ul className="relative mt-10 grid grid-cols-1 gap-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-4 lg:gap-6">
               <div
@@ -228,20 +228,20 @@ export default function HowItWorksPage() {
             </ul>
 
             <div className="mt-10 flex min-w-0 flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
-              <RequestErrandButton className="inline-flex items-center justify-center rounded-xl bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base" />
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-xl border-2 border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-400 hover:bg-slate-50 sm:px-6 sm:py-3 sm:text-base"
-              >
-                Contact us
-              </Link>
-            </div>
-          </section>
-        </div>
+            <RequestErrandButton className="inline-flex items-center justify-center rounded-xl bg-[var(--primary)] px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-95 sm:px-6 sm:py-3 sm:text-base" />
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-400 hover:bg-slate-50 sm:px-6 sm:py-3 sm:text-base"
+            >
+              Contact us
+            </Link>
+          </div>
+        </section>
+          </div>
 
         <div className="mt-16 sm:mt-20 lg:mt-24">
           <GetStartedCta />
-        </div>
+          </div>
       </main>
 
       <Footer />
