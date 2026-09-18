@@ -58,7 +58,7 @@ export function AboutCoreValues() {
       aria-labelledby="about-values-heading"
     >
       <div className="site-container py-16 sm:py-20 lg:py-24">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+        <div className="grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-x-12">
           <div className="max-w-xl">
             <span className="home2-street-tag bg-[#0d2412] text-[#ffe600]">Core values</span>
             <h2
@@ -72,7 +72,31 @@ export function AboutCoreValues() {
             <TitleSquiggle />
           </div>
 
-          <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row lg:w-auto lg:shrink-0">
+          <ul className="mt-12 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:col-span-2">
+            {values.map((value) => (
+              <li key={value.title}>
+                <article
+                  tabIndex={0}
+                  className="home2-service-card home2-flat-card flex h-full flex-col p-5 sm:p-7"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className={`home2-street-tag ${value.tagClass}`}>{value.tag}</span>
+                    <span className="font-montserrat text-sm font-black tracking-tight text-[#0d2412]/35">
+                      {value.n}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 font-montserrat text-xl font-black leading-tight tracking-tight sm:text-2xl">
+                    {value.title}
+                  </h3>
+                  <p className="mt-3 font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/75 sm:text-base">
+                    {value.copy}
+                  </p>
+                </article>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row lg:col-start-2 lg:row-start-1 lg:mt-0 lg:w-auto lg:shrink-0">
             <Link
               href="/careers"
               className="inline-flex items-center justify-center gap-2 rounded-full border-[2.5px] border-[#0d2412] bg-white px-6 py-3.5 font-montserrat text-sm font-extrabold text-[#0d2412] shadow-[0_3px_0_#0d2412] transition hover:translate-y-px hover:bg-[#e8f4ea] hover:shadow-[0_2px_0_#0d2412] sm:px-7 sm:text-base"
@@ -89,30 +113,6 @@ export function AboutCoreValues() {
             </a>
           </div>
         </div>
-
-        <ul className="mt-12 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5">
-          {values.map((value) => (
-            <li key={value.title}>
-              <article
-                tabIndex={0}
-                className="home2-service-card home2-flat-card flex h-full flex-col p-5 sm:p-7"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <span className={`home2-street-tag ${value.tagClass}`}>{value.tag}</span>
-                  <span className="font-montserrat text-sm font-black tracking-tight text-[#0d2412]/35">
-                    {value.n}
-                  </span>
-                </div>
-                <h3 className="mt-5 font-montserrat text-xl font-black leading-tight tracking-tight sm:text-2xl">
-                  {value.title}
-                </h3>
-                <p className="mt-3 font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/75 sm:text-base">
-                  {value.copy}
-                </p>
-              </article>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );

@@ -97,6 +97,24 @@ body {
   transform: scaleX(1);
 }
 
+.home2-subnav-link {
+  display: block;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-montserrat);
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #0d2412;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.home2-subnav-link:hover,
+.home2-subnav-link[aria-current="page"] {
+  background: #308030;
+  color: #ffe600;
+}
+
 .home2-street-tag {
   display: inline-flex;
   align-items: center;

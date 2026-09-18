@@ -16,13 +16,14 @@ type DropdownProps = {
   onChange?: (value: string) => void;
   placeholder?: string;
   className?: string;
+  variant?: "default" | "street";
   "aria-label"?: string;
 };
 
-function ChevronDown({ open }: { open: boolean }) {
+function ChevronDown({ open, className }: { open: boolean; className?: string }) {
   return (
     <svg
-      className={`h-4 w-4 shrink-0 text-slate-500 transition-transform ${open ? "rotate-180" : ""}`}
+      className={`h-4 w-4 shrink-0 transition-transform ${open ? "rotate-180" : ""} ${className ?? "text-slate-500"}`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -45,8 +46,10 @@ export function Dropdown({
   onChange,
   placeholder = "Select...",
   className = "",
+  variant = "default",
   "aria-label": ariaLabel,
 }: DropdownProps) {
+  const street = variant === "street";
   const [isOpen, setIsOpen] = useState(false);
   const [internalValue, setInternalValue] = useState(defaultValue ?? "");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,19 +93,29 @@ export function Dropdown({
         aria-haspopup="listbox"
         aria-label={ariaLabel ?? placeholder}
         aria-labelledby={ariaLabel ? undefined : `${id}-label`}
-        className={`flex w-full items-center justify-between rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-left text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] ${
-          !selectedOption ? "text-slate-500" : ""
-        }`}
+        className={
+          street
+            ? `flex w-full items-center justify-between rounded-xl border-[2.5px] border-[#0d2412] bg-white px-4 py-3 text-left font-montserrat text-sm font-semibold outline-none transition focus:bg-[#e8f4ea] ${
+                selectedOption ? "text-[#0d2412]" : "text-[#0d2412]/40"
+              }`
+            : `flex w-full items-center justify-between rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-left text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] ${
+                !selectedOption ? "text-slate-500" : ""
+              }`
+        }
       >
         <span>{displayLabel}</span>
-        <ChevronDown open={isOpen} />
+        <ChevronDown open={isOpen} className={street ? "text-[#0d2412]" : "text-slate-500"} />
       </button>
 
       {isOpen && (
         <ul
           role="listbox"
           aria-activedescendant={value ? `${id}-option-${value}` : undefined}
-          className="absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
+          className={
+            street
+              ? "absolute left-0 right-0 top-full z-50 mt-1.5 max-h-56 overflow-auto rounded-xl border-[2.5px] border-[#0d2412] bg-white py-1.5 shadow-[4px_4px_0_#dbab29]"
+              : "absolute left-0 right-0 top-full z-50 mt-1 max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
+          }
         >
           {options.map((option) => (
             <li
@@ -117,11 +130,17 @@ export function Dropdown({
                   handleSelect(option);
                 }
               }}
-              className={`cursor-pointer px-3 py-2.5 text-base transition-colors hover:bg-slate-50 ${
-                value === option.value
-                  ? "bg-[color-mix(in_srgb,var(--primary)_12%,white)] text-[var(--primary)] font-medium"
-                  : "text-slate-900"
-              }`}
+              className={
+                street
+                  ? `cursor-pointer px-4 py-2.5 font-montserrat text-sm font-semibold transition-colors hover:bg-[#e8f4ea] ${
+                      value === option.value ? "bg-[#e8f4ea] font-extrabold text-[#1b5c2a]" : "text-[#0d2412]"
+                    }`
+                  : `cursor-pointer px-3 py-2.5 text-base transition-colors hover:bg-slate-50 ${
+                      value === option.value
+                        ? "bg-[color-mix(in_srgb,var(--primary)_12%,white)] text-[var(--primary)] font-medium"
+                        : "text-slate-900"
+                    }`
+              }
             >
               {option.label}
             </li>

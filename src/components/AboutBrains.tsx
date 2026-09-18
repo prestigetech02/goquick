@@ -161,7 +161,7 @@ export function AboutBrains() {
           <TitleSquiggle />
         </div>
 
-        <ul className="mx-auto mt-12 grid max-w-5xl grid-cols-3 gap-x-3 gap-y-8 sm:mt-16 sm:gap-x-8 sm:gap-y-14 lg:gap-x-12">
+        <ul className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-x-3 gap-y-8 sm:mt-16 sm:gap-x-8 sm:gap-y-14 md:grid-cols-3 lg:gap-x-12">
           {team.map((person) => (
             <li key={person.name} className="text-center">
               <ShapePortrait

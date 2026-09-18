@@ -17,9 +17,9 @@ const navItems: readonly NavItem[] = [
       { label: "Careers", href: "/careers" },
     ],
   },
-  { label: "How It Works", href: "/#how-it-works" },
   { label: "Services", href: "/services" },
-  { label: "Runners", href: "/#for-runners" },
+  { label: "Runners", href: "/runners" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 function isDropdown(item: NavItem): item is { label: string; children: readonly NavLink[] } {
@@ -120,17 +120,14 @@ export function Home2Header() {
                       {item.label}
                       <NavZigzag position="bottom" />
                     </button>
-                    <div className="invisible absolute left-1/2 top-full z-50 w-40 -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                      <div className="rounded-2xl border-[2.5px] border-[#0d2412] bg-white py-1.5 shadow-[4px_4px_0_#dbab29]">
+                    <div className="invisible absolute left-1/2 top-full z-50 w-44 -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                      <div className="overflow-hidden rounded-2xl border-[2.5px] border-[#0d2412] bg-white py-1 shadow-[4px_4px_0_#ffe600]">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className={`block px-4 py-2 text-sm font-extrabold ${
-                              isActive(pathname, child.href)
-                                ? "bg-[#e8f4ea] text-[#1b5c2a]"
-                                : "text-[#0d2412] hover:bg-[#e8f4ea]"
-                            }`}
+                            className="home2-subnav-link"
+                            aria-current={isActive(pathname, child.href) ? "page" : undefined}
                           >
                             {child.label}
                           </Link>
@@ -211,7 +208,9 @@ export function Home2Header() {
                         href={child.href}
                         onClick={() => setMenuOpen(false)}
                         className={`block rounded-full px-4 py-2.5 text-sm font-extrabold ${
-                          isActive(pathname, child.href) ? "bg-[#e8f4ea] text-[#1b5c2a]" : "text-[#0d2412]"
+                          isActive(pathname, child.href)
+                            ? "bg-[#308030] text-[#ffe600]"
+                            : "text-[#0d2412] hover:bg-[#308030] hover:text-[#ffe600]"
                         }`}
                       >
                         {child.label}

@@ -16,6 +16,11 @@ const TOPIC_OPTIONS = [
 
 const CONTACT_API = `${siteConfig.apiBaseUrl}/contact`;
 
+const fieldClass =
+  "mt-1.5 w-full rounded-xl border-[2.5px] border-[#0d2412] bg-white px-4 py-3 font-montserrat text-sm font-semibold text-[#0d2412] outline-none transition placeholder:text-[#0d2412]/40 focus:bg-[#e8f4ea]";
+
+const labelClass = "font-montserrat text-sm font-extrabold text-[#0d2412]";
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -55,7 +60,7 @@ export function ContactForm() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        setStatusMessage(data.message ?? "Thanks for reaching out! We'll get back to you within 24 hours.");
+        setStatusMessage(data.message ?? "Thanks. We'll get back to you soon.");
         form.reset();
       } else {
         setStatus("error");
@@ -64,7 +69,7 @@ export function ContactForm() {
             (res.ok ? "Something went wrong. Please try again." : `Request failed (${res.status}). Check that the API is at ${CONTACT_API} and CORS allows this site.`)
         );
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
       setStatusMessage(
         "Could not reach the server. Ensure the backend is running and, for local dev, set NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1 in the landing .env then restart the dev server."
@@ -73,38 +78,35 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      className="space-y-5"
-      onSubmit={handleSubmit}
-    >
-      <div className="space-y-1.5">
-        <label htmlFor="name" className="text-base font-medium text-slate-800">
+    <form className="space-y-5" onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="name" className={labelClass}>
           Full name
         </label>
         <input
           id="name"
           name="name"
           type="text"
-          placeholder="e.g. Adebola Johnson"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          placeholder="Your name"
+          className={fieldClass}
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="email" className="text-base font-medium text-slate-800">
-          Email address
+      <div>
+        <label htmlFor="email" className={labelClass}>
+          Email
         </label>
         <input
           id="email"
           name="email"
           type="email"
-          placeholder="your@email.com"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          placeholder="you@email.com"
+          className={fieldClass}
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="topic" className="text-base font-medium text-slate-800">
+      <div>
+        <label htmlFor="topic" className={labelClass} id="topic-label">
           Topic
         </label>
         <Dropdown
@@ -113,36 +115,39 @@ export function ContactForm() {
           options={TOPIC_OPTIONS}
           defaultValue="support"
           placeholder="Select a topic"
+          variant="street"
+          className="mt-1.5"
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="message" className="text-base font-medium text-slate-800">
+      <div>
+        <label htmlFor="message" className={labelClass}>
           Message
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
-          placeholder="Describe your errand, issue, or enquiry. Include order ID if you're reporting a problem..."
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          rows={5}
+          placeholder="How can we help?"
+          className={`${fieldClass} resize-y`}
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-3 pt-1">
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex w-full items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 text-base font-medium text-white shadow-sm transition hover:bg-[var(--primary-hover)] disabled:opacity-70 sm:w-auto"
+          className="home2-create-cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#1b5c2a] px-6 py-3.5 font-montserrat text-sm font-extrabold text-[#e8f4ea] transition hover:bg-[#164a22] disabled:opacity-70 sm:w-auto sm:px-7 sm:text-base"
         >
-          {status === "loading" ? "Sending…" : "Send to GoQuick"}
+          {status === "loading" ? "Sending…" : "Send message"}
+          {status !== "loading" ? <span aria-hidden>→</span> : null}
         </button>
-        {status === "success" && (
-          <p className="text-base font-medium text-[var(--primary)]">{statusMessage}</p>
-        )}
-        {status === "error" && (
-          <p className="text-base font-medium text-red-600">{statusMessage}</p>
-        )}
+        {status === "success" ? (
+          <p className="font-montserrat text-sm font-semibold text-[#308030]">{statusMessage}</p>
+        ) : null}
+        {status === "error" ? (
+          <p className="font-montserrat text-sm font-semibold text-[#e23d28]">{statusMessage}</p>
+        ) : null}
       </div>
     </form>
   );

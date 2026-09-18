@@ -1,100 +1,122 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Home2Header } from "@/components/Home2Header";
+import { Home2Faq } from "@/components/Home2Faq";
+import { Home2Cta } from "@/components/Home2Cta";
+import { Home2Footer } from "@/components/Home2Footer";
 import { ContactForm } from "@/components/ContactForm";
-import { SocialLinks } from "@/components/SocialLinks";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Contact GoQuick for errand support, runner signups, payment help, partnerships, and feedback. We respond within 24 hours.",
+  description:
+    "Contact GoQuick for errand support, runner signups, payment help, partnerships, and feedback.",
   alternates: { canonical: "/contact" },
 };
+
+function TitleSquiggle({ className = "mx-auto mt-4 w-44 text-[#ffe600] sm:w-56" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 180 14" fill="none" aria-hidden>
+      <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function toTelHref(phone: string) {
+  return `tel:+${phone.replace(/\(0\)/g, "").replace(/\D/g, "")}`;
+}
+
+const channels = [
+  {
+    tag: "Email",
+    tagClass: "bg-[#308030] text-[#ffe600]",
+    label: siteConfig.contact.email,
+    href: `mailto:${siteConfig.contact.email}`,
+  },
+  {
+    tag: "Phone",
+    tagClass: "bg-[#0d2412] text-[#ffe600]",
+    label: siteConfig.contact.phone,
+    href: toTelHref(siteConfig.contact.phone),
+  },
+] as const;
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Header />
+      <Home2Header />
 
-      <main className="site-container flex min-h-[60vh] flex-col gap-10 pb-16 pt-28 sm:pt-32">
-        <section aria-labelledby="contact-heading" className="space-y-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary)]">
-            Contact Us
-          </p>
+      <section
+        className="relative overflow-hidden bg-[#308030] text-[#e8f4ea]"
+        aria-labelledby="contact-hero-heading"
+      >
+        <div className="mx-auto flex min-h-[80svh] max-w-4xl flex-col items-center justify-center px-5 pb-16 pt-28 text-center font-montserrat sm:min-h-[88svh] sm:px-8 sm:pb-20 sm:pt-32 md:pt-36">
+          <span className="home2-street-tag bg-[#0d2412] text-[#ffe600]">Contact</span>
           <h1
-            id="contact-heading"
-            className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
+            id="contact-hero-heading"
+            className="mt-5 text-[2.35rem] font-black leading-[0.95] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]"
           >
-            Get in touch with the GoQuick team
+            Talk to
+            
+            <span className="text-[#ffe600]"> GoQuick</span>
           </h1>
-          <p className="max-w-2xl text-base text-slate-600">
-            Whether you need help with an errand, have a question about the app, want to
-            become a runner, or have a partnership idea, we&apos;re here to help. Reach
-            out and we&apos;ll respond within 24 hours.
-          </p>
-        </section>
-
-        <section className="grid gap-10 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-          <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-            <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
-              Send us a message
-            </h2>
-            <p className="text-base text-slate-600">
-              Tell us what you need: app support, runner enquiries, partnership proposals,
-              or feedback. We read every message and will get back to you soon.
-            </p>
-            <ContactForm />
+          <TitleSquiggle />
+          <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:gap-4">
+            <a
+              href="#message"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0d2412] px-6 py-3.5 text-sm font-extrabold text-[#ffe600] shadow-[0_4px_0_#ffe600] transition hover:translate-y-px hover:bg-[#08180c] hover:shadow-[0_3px_0_#ffe600] sm:w-auto sm:px-7 sm:text-base"
+            >
+              Send a message
+              <span aria-hidden>→</span>
+            </a>
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border-[2.5px] border-[#0d2412] bg-transparent px-6 py-3.5 text-sm font-extrabold text-[#e8f4ea] shadow-[0_4px_0_#ffe600] transition hover:translate-y-px hover:bg-[#0d2412]/20 hover:shadow-[0_3px_0_#ffe600] sm:w-auto sm:px-7 sm:text-base"
+            >
+              Email us
+              <span aria-hidden>→</span>
+            </a>
           </div>
+        </div>
+      </section>
 
-          <aside className="space-y-6 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8 md:min-w-0">
-            <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
-              GoQuick headquarters
-            </h2>
-            <p className="text-base text-slate-600">
-              Our team is based in Lagos and ready to help with errands, app issues,
-              runner signups, and business enquiries.
-            </p>
-
-            <div className="space-y-4 text-base text-slate-700">
-              <div>
-                <p className="font-semibold text-slate-900">Support email</p>
-                <a href="mailto:support@goquickapp.com.ng" className="text-[var(--primary)] hover:underline">
-                  support@goquickapp.com.ng
-                </a>
-              </div>
-              <div>
-                <p className="font-semibold text-slate-900">Partnerships &amp; press</p>
-                <a href="mailto:hello@goquickapp.com.ng" className="text-[var(--primary)] hover:underline">
-                  hello@goquickapp.com.ng
-                </a>
-              </div>
-              <div>
-                <p className="font-semibold text-slate-900">Phone / WhatsApp</p>
-                <p>{siteConfig.contact.phone}</p>
-              </div>
-              <div>
-                <p className="font-semibold text-slate-900">Lagos office</p>
-                <p>
-                  Lagos, Nigeria
-                  <br />
-                  <span className="text-slate-500">Serving errand requests across the city</span>
-                </p>
-              </div>
-              <div>
-                <p className="font-semibold text-slate-900">Support hours</p>
-                <p>Monday to Friday, 8:00am to 6:00pm (WAT)</p>
-              </div>
+      <section
+        className="relative scroll-mt-32 overflow-hidden bg-[#e8f4ea] text-[#0d2412]"
+        id="message"
+        aria-label="Contact form"
+      >
+        <div className="site-container py-16 sm:py-20 lg:py-24">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(16rem,0.85fr)] lg:items-start lg:gap-8">
+            <div className="home2-service-card bg-white p-5 sm:p-8">
+              <ContactForm />
             </div>
-            <div className="text-base">
-              <p className="mb-3 font-semibold text-slate-900">Follow us</p>
-              <SocialLinks variant="light" />
-            </div>
-          </aside>
-        </section>
-      </main>
 
-      <Footer />
+            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              {channels.map((channel) => (
+                <li key={channel.tag}>
+                  <a
+                    href={channel.href}
+                    className="home2-service-card home2-flat-card flex h-full flex-col p-5 sm:p-7"
+                  >
+                    <span className={`home2-street-tag w-fit ${channel.tagClass}`}>{channel.tag}</span>
+                    <p className="mt-5 break-all font-montserrat text-lg font-black leading-tight tracking-tight sm:text-xl">
+                      {channel.label}
+                    </p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <Home2Faq />
+      <Home2Cta />
+      <Home2Footer />
     </div>
   );
 }
-

@@ -13,7 +13,7 @@ import { siteConfig } from "@/lib/site";
 
 const quickLinks = [
   { label: "How It Works", href: "/#how-it-works" },
-  { label: "For Runners", href: "/#for-runners" },
+  { label: "For Runners", href: "/runners" },
   { label: "FAQ", href: "/#faq" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
