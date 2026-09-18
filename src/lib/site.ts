@@ -27,15 +27,19 @@ export const siteConfig = {
       "https://apps.apple.com/app/goquick/id",
     playStore:
       process.env.NEXT_PUBLIC_PLAY_STORE_URL?.trim() ||
-      "https://play.google.com/store/apps/details?id=com.goquick.app",
+      "https://play.google.com/store/apps/details?id=com.errands.marketplace",
   },
   social: {
     twitterHandle: "@goquickapp",
     whatsapp: process.env.NEXT_PUBLIC_SOCIAL_WHATSAPP?.trim() || "#",
-    facebook: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK?.trim() || "#",
+    facebook:
+      process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK?.trim() ||
+      "https://www.facebook.com/profile.php?id=61561904180152",
     twitter: process.env.NEXT_PUBLIC_SOCIAL_TWITTER?.trim() || "https://twitter.com/goquickapp",
-    tiktok: process.env.NEXT_PUBLIC_SOCIAL_TIKTOK?.trim() || "#",
-    instagram: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM?.trim() || "#",
+    tiktok:
+      process.env.NEXT_PUBLIC_SOCIAL_TIKTOK?.trim() || "https://www.tiktok.com/@goquickapp.ng",
+    instagram:
+      process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM?.trim() || "https://www.instagram.com/goquick.app",
     linkedin: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN?.trim() || "#",
   },
   contact: {
@@ -61,4 +65,5 @@ export const webAppLinks = {
   getStarted: () => `${siteConfig.webAppUrl}/signup`,
   signIn: () => `${siteConfig.webAppUrl}/login`,
   requestErrand: () => `${siteConfig.webAppUrl}/signup`,
+  accountSecurity: () => `${siteConfig.webAppUrl}/profile/security`,
 } as const;

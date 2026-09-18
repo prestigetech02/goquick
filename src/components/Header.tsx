@@ -29,6 +29,7 @@ const navItems: NavLink[] = [
   { label: "For Runners", href: "/#for-runners" },
   { label: "Pricing", href: "/pricing" },
   { label: "Help", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {

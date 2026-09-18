@@ -109,8 +109,12 @@ export default function PrivacyPage() {
               <li>Lodge a complaint with a supervisory authority.</li>
             </ul>
             <p className="mt-4 text-slate-600">
-              You can update your profile and preferences in the app. For other requests, contact us using the
-              details below.
+              You can update your profile and preferences in the app. To delete your account, use the in-app
+              option or our{" "}
+              <Link href="/account-deletion" className="text-[var(--primary)] hover:underline">
+                account deletion page
+              </Link>
+              . For other requests, contact us using the details below.
             </p>
           </section>
 

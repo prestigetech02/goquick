@@ -28,6 +28,7 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-montserrat: var(--font-hero), ui-sans-serif, system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,9 +50,141 @@ body {
   overflow-x: hidden;
 }
 
-.nav-link-active {
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary);
+.home2-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 0.15rem;
+  color: #0d2412;
+  font-family: var(--font-montserrat);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+
+.home2-nav-link:hover,
+.home2-nav-link[aria-current="page"] {
+  color: #1b5c2a;
+}
+
+.home2-nav-zigzag {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 7px;
+  width: 100%;
+  color: #308030;
+  opacity: 0;
+  transform: scaleX(0.86);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+  pointer-events: none;
+}
+
+.home2-nav-zigzag.top {
+  top: 0;
+}
+
+.home2-nav-zigzag.bottom {
+  bottom: 0;
+}
+
+.home2-nav-link:hover .home2-nav-zigzag,
+.home2-nav-link[aria-current="page"] .home2-nav-zigzag {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.home2-street-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.42rem 0.8rem;
+  border-radius: 0.42rem;
+  font-family: var(--font-montserrat);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 rgba(13, 36, 18, 0.16);
+}
+
+.home2-service-card {
+  border: 3px solid #0d2412;
+  border-radius: 1.35rem;
+  box-shadow: 5px 6px 0 #0d2412;
+}
+
+.home2-own-way {
+  position: relative;
+  white-space: nowrap;
+}
+
+.home2-own-way::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -4%;
+  bottom: -0.18em;
+  height: 0.38em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 10' fill='none'%3E%3Cpath d='M1 7 C12 2 20 8 32 5 C44 2 52 8 64 4 C72 2 78 6 79 7' stroke='%23e23d28' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.home2-create-cta {
+  box-shadow: 0 4px 0 #0d2412;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.home2-create-cta:hover {
+  transform: translateY(1px);
+  box-shadow: 0 3px 0 #0d2412;
+}
+
+.home2-testimonial-marquee {
+  overflow: hidden;
+}
+
+.home2-testimonial-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  padding-inline: 1.25rem;
+  animation: home2-testimonial-scroll 42s linear infinite;
+}
+
+@media (min-width: 640px) {
+  .home2-testimonial-track {
+    gap: 1.25rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+.home2-testimonial-marquee:hover .home2-testimonial-track {
+  animation-play-state: paused;
+}
+
+@keyframes home2-testimonial-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home2-testimonial-track {
+    animation: none;
+  }
 }
 
 /* Uniform page/section shell — equal left/right gutters */

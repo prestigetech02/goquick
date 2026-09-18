@@ -70,7 +70,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Phone / WhatsApp</p>
-                <p>+234 (0) 800 000 0000</p>
+                <p>{siteConfig.contact.phone}</p>
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Lagos office</p>

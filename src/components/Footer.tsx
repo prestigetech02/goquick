@@ -21,11 +21,13 @@ const quickLinks = [
   { label: "About Us", href: "/about" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
+  { label: "Delete Account", href: "/account-deletion" },
   { label: "Security", href: "/services" },
   { label: "Compliance", href: "/services" },
 ];
@@ -142,6 +144,11 @@ export function Footer() {
                 >
                   {siteConfig.contact.email}
                 </a>
+              </p>
+              <p>
+                <Link href="/contact" className="transition-colors hover:text-white">
+                  Contact page
+                </Link>
               </p>
               <p className="flex items-center gap-2">
                 <span aria-hidden>
