@@ -137,6 +137,18 @@ export function Home2Footer() {
         <div className="mt-10 border-t-[2.5px] border-[#0d2412] pt-6">
           <p className="text-center font-montserrat text-sm font-semibold text-[#0d2412]/60">
             © {year} {siteConfig.name}. All rights reserved.
+            <span className="mx-2 text-[#0d2412]/30" aria-hidden>
+              ·
+            </span>
+            Developed and managed by{" "}
+            <a
+              href="https://techyx360.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0d2412]/80 underline-offset-2 transition hover:text-[#1b5c2a] hover:underline"
+            >
+              TechyX360
+            </a>
           </p>
         </div>
       </div>

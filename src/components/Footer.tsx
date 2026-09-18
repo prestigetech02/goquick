@@ -203,6 +203,18 @@ export function Footer() {
         <div className="mt-12 border-t border-slate-700/80 pt-8">
           <p className="text-center text-sm text-slate-400">
             © {year} {siteConfig.name}. All rights reserved.
+            <span className="mx-2 text-slate-600" aria-hidden>
+              ·
+            </span>
+            Developed and managed by{" "}
+            <a
+              href="https://techyx360.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 underline-offset-2 hover:text-white hover:underline"
+            >
+              TechyX360
+            </a>
           </p>
         </div>
       </Container>
