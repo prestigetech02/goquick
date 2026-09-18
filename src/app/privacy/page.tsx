@@ -122,8 +122,12 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-slate-900">7. Cookies and Similar Technologies</h2>
             <p className="mt-2 text-slate-600">
               Our website may use cookies and similar technologies to remember preferences, analyse traffic, and
-              improve your experience. You can manage cookie settings in your browser. Our app may use identifiers
-              and local storage for functionality and analytics.
+              improve your experience. You can manage cookie settings in your browser or through our cookie banner.
+              See our{" "}
+              <Link href="/cookies" className="text-[var(--primary)] hover:underline">
+                Cookies Policy
+              </Link>{" "}
+              for details. Our app may use identifiers and local storage for functionality and analytics.
             </p>
           </section>
 

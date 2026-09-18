@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/lib/site";
 import { CareersPageContent } from "./CareersPageContent";
 
 export const metadata: Metadata = {
@@ -35,18 +34,10 @@ const openPositions = [
   },
 ];
 
-const benefits = [
-  "Competitive salary and growth opportunities",
-  "Flexible and inclusive work environment",
-  "Impact on how a city gets things done",
-  "Learning and development support",
-];
-
 export default function CareersPage() {
   return (
     <CareersPageContent
       openPositions={openPositions}
-      benefits={benefits}
       careersEmail={CAREERS_EMAIL}
     />
   );

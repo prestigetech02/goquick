@@ -12,9 +12,9 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
 const quickLinks = [
-  { label: "How It Works", href: "/home2#how-it-works" },
-  { label: "For Runners", href: "/home2#for-runners" },
-  { label: "FAQ", href: "/home2#faq" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "For Runners", href: "/#for-runners" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
@@ -25,6 +25,7 @@ const quickLinks = [
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
+  { label: "Cookies Policy", href: "/cookies" },
   { label: "Delete Account", href: "/account-deletion" },
 ];
 
@@ -70,7 +71,7 @@ export function Home2Footer() {
       <div className="site-container py-12 sm:py-14">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-            <Link href="/home2" className="inline-block" aria-label={`${siteConfig.name} home`}>
+            <Link href="/" className="inline-block" aria-label={`${siteConfig.name} home`}>
               <Image
                 src="/logo.png"
                 alt={siteConfig.name}

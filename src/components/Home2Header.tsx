@@ -17,9 +17,9 @@ const navItems: readonly NavItem[] = [
       { label: "Careers", href: "/careers" },
     ],
   },
-  { label: "How It Works", href: "/home2#how-it-works" },
+  { label: "How It Works", href: "/#how-it-works" },
   { label: "Services", href: "/services" },
-  { label: "Runners", href: "/home2#for-runners" },
+  { label: "Runners", href: "/#for-runners" },
 ];
 
 function isDropdown(item: NavItem): item is { label: string; children: readonly NavLink[] } {
@@ -58,7 +58,7 @@ function NigeriaFlag() {
 
 function isActive(pathname: string, href: string) {
   if (href.includes("#")) return false;
-  if (href === "/home2") return pathname === "/home2" || pathname === "/home2/";
+  if (href === "/") return pathname === "/" || pathname === "";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -93,7 +93,7 @@ export function Home2Header() {
         }`}
       >
         <div className="relative flex items-center justify-between gap-3 px-4 py-2 sm:px-5 sm:py-2.5">
-          <Link href="/home2" className="flex shrink-0 items-center" aria-label={`${siteConfig.name} home`}>
+          <Link href="/" className="flex shrink-0 items-center" aria-label={`${siteConfig.name} home`}>
             <Image
               src="/logo.png"
               alt={siteConfig.name}

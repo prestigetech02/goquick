@@ -118,6 +118,33 @@ body {
   box-shadow: 5px 6px 0 #0d2412;
 }
 
+.home2-flat-card {
+  background: #fff;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.home2-flat-card:hover,
+.home2-flat-card:focus-visible {
+  transform: translate(4px, 5px);
+  box-shadow: 1px 1px 0 #0d2412;
+  background: #dbab29;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home2-flat-card {
+    transition: background-color 0.16s ease;
+  }
+
+  .home2-flat-card:hover,
+  .home2-flat-card:focus-visible {
+    transform: none;
+    box-shadow: 5px 6px 0 #0d2412;
+  }
+}
+
 .home2-own-way {
   position: relative;
   white-space: nowrap;

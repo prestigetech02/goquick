@@ -27,6 +27,7 @@ const quickLinks = [
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
+  { label: "Cookies Policy", href: "/cookies" },
   { label: "Delete Account", href: "/account-deletion" },
   { label: "Security", href: "/services" },
   { label: "Compliance", href: "/services" },

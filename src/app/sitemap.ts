@@ -15,6 +15,7 @@ const STATIC_PAGES: { url: string; changeFrequency: "weekly" | "monthly" | "year
   { url: "blog", changeFrequency: "weekly", priority: 0.8 },
   { url: "privacy", changeFrequency: "yearly", priority: 0.4 },
   { url: "terms", changeFrequency: "yearly", priority: 0.4 },
+  { url: "cookies", changeFrequency: "yearly", priority: 0.4 },
   { url: "account-deletion", changeFrequency: "yearly", priority: 0.5 },
 ];
 
