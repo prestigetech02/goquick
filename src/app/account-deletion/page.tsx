@@ -45,6 +45,7 @@ const deletionPaths = [
       "Enter your password. Your account is deleted immediately.",
     ],
     cta: { label: "Open web app", href: webAppLinks.accountSecurity() },
+    external: false,
   },
   {
     n: "02",

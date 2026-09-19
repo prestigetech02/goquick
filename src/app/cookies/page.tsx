@@ -54,12 +54,14 @@ const cookieTypes = [
     tag: "Optional",
     title: "Analytics",
     copy: "Help us understand traffic, popular pages, and issues. We only use these if you accept optional cookies.",
+    featured: false,
   },
   {
     n: "03",
     tag: "Optional",
     title: "Functional",
     copy: "Remember preferences that make the visit smoother. We only use these if you accept optional cookies.",
+    featured: false,
   },
 ] as const;
 

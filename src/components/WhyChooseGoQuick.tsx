@@ -16,6 +16,7 @@ const reasons = [
     tagClass: "bg-[#308030] text-[#dbab29]",
     title: "Pay when it’s done",
     copy: "Escrow holds the fee until the drop is complete. No funny releases.",
+    featured: false,
   },
   {
     n: "03",
@@ -23,6 +24,7 @@ const reasons = [
     tagClass: "bg-[#1b5c2a] text-[#dbab29]",
     title: "Track every stop",
     copy: "Pickup to door, on the map. You are never guessing where it went.",
+    featured: false,
   },
   {
     n: "04",
@@ -30,6 +32,7 @@ const reasons = [
     tagClass: "bg-[#0d2412] text-[#dbab29]",
     title: "Support that answers",
     copy: "Stuck at a gate? Message us. Someone is on it, day or night.",
+    featured: false,
   },
   {
     n: "05",
@@ -37,6 +40,7 @@ const reasons = [
     tagClass: "bg-[#dbab29] text-[#0d2412]",
     title: "We make it right",
     copy: "If the run is off, we don’t hide. We fix it and keep your time.",
+    featured: false,
   },
 ] as const;
 
