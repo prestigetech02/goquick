@@ -58,18 +58,16 @@ export function Home2HowItWorks() {
       aria-labelledby="home2-how-heading"
     >
       <div className="site-container py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto text-center">
           <StreetTag label="How it works" />
           <h2
             id="home2-how-heading"
-            className="mt-5 font-montserrat text-[2.15rem] font-black leading-[0.95] tracking-tight text-[#308030] sm:text-5xl lg:text-[3.25rem]"
+            className="mt-5 whitespace-nowrap font-montserrat text-[clamp(1.35rem,4.2vw,3.25rem)] font-black leading-none tracking-tight text-[#308030]"
           >
-            Getting things done
-            <br />
-            is super easy!
+            Getting things done is super easy!
           </h2>
           <TitleSquiggle />
-          <p className="mx-auto mt-5 max-w-[34ch] font-montserrat text-base font-semibold leading-relaxed text-[#0d2412]/75 sm:text-lg">
+          <p className="mx-auto mt-5 whitespace-nowrap font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/75 sm:text-lg">
             Just a few taps and your errand is on the way.
           </p>
         </div>

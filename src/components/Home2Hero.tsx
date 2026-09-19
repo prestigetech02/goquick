@@ -55,6 +55,10 @@ export function Home2Hero() {
         <RotatingNeed />
       </h1>
 
+      <p className="mt-5 whitespace-nowrap font-montserrat text-sm font-semibold text-[#0d2412]/75 sm:text-lg">
+        Book trusted errand runners in Lagos.
+      </p>
+
       <form
         onSubmit={onSubmit}
         className="mt-8 flex w-full max-w-xl items-center gap-2 rounded-full bg-white p-1.5 shadow-[0_10px_40px_rgba(15,40,20,0.12)] ring-1 ring-black/5 sm:mt-10 sm:p-2"

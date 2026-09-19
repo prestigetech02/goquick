@@ -1,4 +1,4 @@
-const faqs = [
+export const HOME2_FAQS = [
   {
     n: "01",
     question: "What kind of errands can I get done?",
@@ -69,7 +69,7 @@ export function Home2Faq() {
         </div>
 
         <ul className="mt-12 divide-y-[2.5px] divide-[#0d2412] border-y-[2.5px] border-[#0d2412] sm:mt-16">
-          {faqs.map((item) => (
+          {HOME2_FAQS.map((item) => (
             <li
               key={item.n}
               className="grid gap-4 py-7 sm:gap-6 sm:py-8 lg:grid-cols-2 lg:gap-12 lg:py-10"

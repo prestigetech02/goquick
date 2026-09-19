@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
-
-const PRICING_FAQS = [
+export const PRICING_FAQS = [
   {
     question: "Is there a monthly subscription?",
     answer:
@@ -40,74 +36,59 @@ const PRICING_FAQS = [
   },
 ] as const;
 
-function ChevronDown({ open }: { open: boolean }) {
+function TitleSquiggle() {
   return (
     <svg
-      className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-      viewBox="0 0 24 24"
+      className="mt-3 w-40 text-[#ffe600] sm:w-52"
+      viewBox="0 0 180 14"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
       aria-hidden
     >
-      <path d="m6 9 6 6 6-6" />
+      <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 export function PricingFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
     <section
-      className="site-container mt-16 sm:mt-20 lg:mt-24"
+      className="relative overflow-hidden bg-[#e8f4ea] text-[#0d2412]"
       aria-labelledby="pricing-faq-heading"
     >
-      <h2
-        id="pricing-faq-heading"
-        className="text-center text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
-      >
-        Frequently Asked Questions
-      </h2>
+      <div className="site-container py-16 sm:py-20 lg:py-24">
+        <div className="max-w-3xl">
+          <span className="home2-street-tag bg-[#308030] text-[#ffe600]">FAQ</span>
+          <h2
+            id="pricing-faq-heading"
+            className="mt-5 font-montserrat text-[2.15rem] font-black leading-[0.95] tracking-tight text-[#308030] sm:text-5xl lg:text-[3.25rem]"
+          >
+            Pricing questions
+          </h2>
+          <TitleSquiggle />
+        </div>
 
-      <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-slate-200 bg-white sm:mt-10">
-        <ul className="divide-y divide-slate-200">
-          {PRICING_FAQS.map((item, index) => {
-            const isOpen = openIndex === index;
-            const panelId = `pricing-faq-panel-${index}`;
-            const buttonId = `pricing-faq-button-${index}`;
-
-            return (
-              <li key={item.question}>
-                <button
-                  id={buttonId}
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-slate-50/70 sm:px-6 sm:py-5"
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
-                >
-                  <span className="text-sm font-bold text-slate-900 sm:text-base">{item.question}</span>
-                  <ChevronDown open={isOpen} />
-                </button>
-                <div
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={buttonId}
-                  className={`overflow-hidden transition-all duration-200 ${
-                    isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                  aria-hidden={!isOpen}
-                >
-                  <p className="px-5 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6 sm:pb-6 sm:text-[0.95rem]">
-                    {item.answer}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
+        <ul className="mt-12 divide-y-[2.5px] divide-[#0d2412] border-y-[2.5px] border-[#0d2412] sm:mt-16">
+          {PRICING_FAQS.map((item, index) => (
+            <li
+              key={item.question}
+              className="grid gap-4 py-7 sm:gap-6 sm:py-8 lg:grid-cols-2 lg:gap-12 lg:py-10"
+            >
+              <h3 className="flex items-start gap-3 font-montserrat text-lg font-black leading-tight tracking-tight sm:text-xl lg:text-[1.35rem]">
+                <span className="home2-street-tag mt-0.5 shrink-0 bg-[#1b5c2a] text-[#ffe600]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>{item.question}</span>
+              </h3>
+              <p className="font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/75 sm:text-base lg:pt-1">
+                {item.answer}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

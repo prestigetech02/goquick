@@ -1,123 +1,170 @@
-const features = [
+const YELLOW = "#dbab29";
+const MINT = "#e8f4ea";
+
+const reasons = [
   {
-    title: "Verified Runners",
-    description: "Every runner is carefully screened and verified for your safety.",
-    icon: (
-      <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 12 2.75c2.3 0 4.474.523 6.418 1.454a.75.75 0 0 1 .432.678v5.668c0 3.832-2.237 7.27-5.7 8.85a.75.75 0 0 1-.65 0C8.937 17.82 6.7 14.382 6.7 10.55V5.882a.75.75 0 0 1 .432-.678A11.959 11.959 0 0 1 12 2.714z"
-        />
-      </svg>
-    ),
+    n: "01",
+    tag: "People",
+    tagClass: "bg-[#0d2412] text-[#dbab29]",
+    title: "Verified runners",
+    copy: "Screened before they pick up a single bag. You see who is coming.",
+    featured: true,
   },
   {
-    title: "Secure Payments",
-    description: "Pay safely with escrow protection. You pay only when the job is done.",
-    icon: (
-      <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-        />
-      </svg>
-    ),
+    n: "02",
+    tag: "Money",
+    tagClass: "bg-[#308030] text-[#dbab29]",
+    title: "Pay when it’s done",
+    copy: "Escrow holds the fee until the drop is complete. No funny releases.",
   },
   {
-    title: "Real-time Tracking",
-    description: "Track your runner live and stay updated at every step.",
-    icon: (
-      <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-        />
-      </svg>
-    ),
+    n: "03",
+    tag: "Live",
+    tagClass: "bg-[#1b5c2a] text-[#dbab29]",
+    title: "Track every stop",
+    copy: "Pickup to door, on the map. You are never guessing where it went.",
   },
   {
-    title: "24/7 Support",
-    description: "Our support team is available anytime to assist you.",
-    icon: (
-      <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.059-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-        />
-      </svg>
-    ),
+    n: "04",
+    tag: "Help",
+    tagClass: "bg-[#0d2412] text-[#dbab29]",
+    title: "Support that answers",
+    copy: "Stuck at a gate? Message us. Someone is on it, day or night.",
   },
   {
-    title: "Satisfaction Guaranteed",
-    description: "We're committed to delivering the best experience, every time.",
-    icon: (
-      <svg className="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.41.276.61.265.52.798.87 1.392.87h3.45a.75.75 0 0 0 .75-.75V8.854"
-        />
-      </svg>
-    ),
+    n: "05",
+    tag: "Promise",
+    tagClass: "bg-[#dbab29] text-[#0d2412]",
+    title: "We make it right",
+    copy: "If the run is off, we don’t hide. We fix it and keep your time.",
   },
 ] as const;
 
+function TitleSquiggle() {
+  return (
+    <svg
+      className="mt-3 w-40 text-[#dbab29] sm:w-52"
+      viewBox="0 0 180 14"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function RouteDoodle({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 420 180" fill="none" aria-hidden>
+      <path
+        d="M12 148 C70 40 140 170 210 70 C280 -10 340 120 408 36"
+        stroke={YELLOW}
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeDasharray="10 12"
+        opacity="0.4"
+      />
+      <circle cx="210" cy="70" r="10" fill={MINT} stroke={YELLOW} strokeWidth="3" />
+      <circle cx="12" cy="148" r="7" fill={YELLOW} />
+      <circle cx="408" cy="36" r="7" fill={YELLOW} />
+    </svg>
+  );
+}
+
+function ReasonCard({
+  n,
+  tag,
+  tagClass,
+  title,
+  copy,
+  featured,
+}: (typeof reasons)[number]) {
+  return (
+    <article
+      tabIndex={0}
+      className={`relative flex h-full flex-col overflow-hidden rounded-[1.35rem] border-[3px] border-[#0d2412] transition duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0_#dbab29] focus-visible:translate-x-1 focus-visible:translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0 ${
+        featured
+          ? "bg-[#dbab29] p-6 shadow-[6px_7px_0_#0d2412] sm:p-8"
+          : "bg-[#e8f4ea] p-5 shadow-[5px_6px_0_#dbab29] sm:p-6"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <span className={`home2-street-tag ${tagClass}`}>{tag}</span>
+        <span
+          className={`font-montserrat text-sm font-black tracking-tight ${
+            featured ? "text-[#0d2412]/40" : "text-[#308030]/45"
+          }`}
+        >
+          {n}
+        </span>
+      </div>
+      <h3
+        className={`mt-5 font-montserrat font-black leading-[0.95] tracking-tight ${
+          featured
+            ? "text-[1.85rem] text-[#0d2412] sm:text-4xl lg:text-[2.6rem]"
+            : "text-xl text-[#308030] sm:text-2xl"
+        }`}
+      >
+        {title}
+      </h3>
+      <p
+        className={`mt-3 font-montserrat font-semibold leading-relaxed text-[#0d2412]/80 ${
+          featured ? "max-w-[28ch] text-base sm:text-lg" : "text-sm sm:text-[0.95rem]"
+        }`}
+      >
+        {copy}
+      </p>
+      {featured ? (
+        <p className="mt-auto pt-8 font-montserrat text-xs font-extrabold uppercase tracking-[0.16em] text-[#0d2412]/55">
+          On every errand
+        </p>
+      ) : null}
+    </article>
+  );
+}
+
 export function WhyChooseGoQuick() {
+  const featured = reasons[0];
+  const rest = reasons.slice(1);
+
   return (
     <section
-      className="site-container mt-16 sm:mt-20 lg:mt-24"
+      className="relative overflow-hidden bg-[#308030] text-[#e8f4ea]"
+      id="why-goquick"
       aria-labelledby="why-choose-heading"
     >
-      <div
-        className="rounded-3xl px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14"
-        style={{ backgroundColor: "color-mix(in srgb, var(--primary) 4%, #f4f6f4)" }}
-      >
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--primary)] sm:text-sm">
-            Why Choose GoQuick?
-          </p>
+      <RouteDoodle className="pointer-events-none absolute -right-8 top-8 hidden w-[28rem] lg:block" />
+      <RouteDoodle className="pointer-events-none absolute -left-16 bottom-4 hidden w-80 rotate-12 opacity-70 lg:block" />
+
+      <div className="site-container py-16 sm:py-20 lg:py-24">
+        <div className="max-w-3xl">
+          <span className="home2-street-tag bg-[#0d2412] text-[#dbab29]">Why GoQuick</span>
           <h2
             id="why-choose-heading"
-            className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl md:text-4xl"
+            className="mt-5 font-montserrat text-[2.15rem] font-black leading-[0.95] tracking-tight text-[#e8f4ea] sm:text-5xl lg:text-[3.35rem]"
           >
-            Built for speed, safety &amp; trust
+            Peace of mind
+            <br />
+            on every <span className="text-[#dbab29]">run</span>
           </h2>
+          <TitleSquiggle />
         </div>
 
-        <ul className="mx-auto mt-10 flex max-w-5xl flex-wrap justify-center gap-y-10 sm:mt-12 lg:mt-14 lg:flex-nowrap lg:gap-0">
-          {features.map((feature, index) => (
-            <li
-              key={feature.title}
-              className={[
-                "flex w-full flex-col items-center px-4 text-center sm:w-1/2 lg:w-auto lg:flex-1 lg:px-5 xl:px-6",
-                index > 0 ? "lg:border-l lg:border-slate-200" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <span
-                className="flex h-14 w-14 items-center justify-center rounded-full"
-                style={{
-                  backgroundColor: "color-mix(in srgb, var(--primary) 14%, white)",
-                  color: "var(--primary)",
-                }}
-              >
-                {feature.icon}
-              </span>
-              <h3 className="mt-4 text-sm font-extrabold text-slate-900 sm:text-base">
-                {feature.title}
-              </h3>
-              <p className="mt-2 max-w-[14rem] text-xs leading-relaxed text-slate-500 sm:text-sm">
-                {feature.description}
-              </p>
-            </li>
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:grid-cols-6 lg:grid-rows-2 lg:gap-5">
+          <div className="sm:col-span-2 lg:col-span-2 lg:row-span-2">
+            <ReasonCard {...featured} />
+          </div>
+          {rest.map((reason) => (
+            <div key={reason.n} className="lg:col-span-2">
+              <ReasonCard {...reason} />
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

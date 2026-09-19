@@ -1,49 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Home2CookieConsent } from "@/components/Home2CookieConsent";
 import { Home2Footer } from "@/components/Home2Footer";
 import { Home2Cta } from "@/components/Home2Cta";
 import { Home2Customize } from "@/components/Home2Customize";
 import { Home2Header } from "@/components/Home2Header";
 import { Home2Hero } from "@/components/Home2Hero";
-import { Home2Faq } from "@/components/Home2Faq";
+import { HOME2_FAQS, Home2Faq } from "@/components/Home2Faq";
 import { Home2ForRunners } from "@/components/Home2ForRunners";
 import { Home2Testimonials } from "@/components/Home2Testimonials";
 import { Home2HowItWorks } from "@/components/Home2HowItWorks";
+import { JsonLd } from "@/components/JsonLd";
+import { faqJsonLd, pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book Reliable Runners For Everyday Tasks",
-  description:
-    "Get errands done faster with GoQuick. Trusted runners, live tracking, and secure payment from pickup to delivery.",
-  alternates: { canonical: "/" },
+  ...pageMetadata({
+    title: "Errand Service in Lagos | Pickup & Delivery",
+    description:
+      "Book trusted GoQuick runners in Lagos for pickups, deliveries, shopping, pharmacy runs, and queues. Live tracking and secure payment.",
+    path: "/",
+  }),
+  title: {
+    absolute: `Errand Service in Lagos | Pickup & Delivery | ${siteConfig.name}`,
+  },
 };
 
 export default function Home() {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.siteUrl,
-    description: siteConfig.description,
-  };
-
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: siteConfig.name,
-    url: siteConfig.siteUrl,
-    description: siteConfig.description,
-    ...(siteConfig.contact.phone && { telephone: siteConfig.contact.phone }),
-    ...(siteConfig.contact.email && { email: siteConfig.contact.email }),
-    areaServed: siteConfig.business.areaServed,
-    ...(siteConfig.business.address && {
-      address: { "@type": "PostalAddress", addressLocality: siteConfig.business.address },
-    }),
-  };
-
   return (
     <div className="min-h-screen min-w-0 bg-[#e8f4ea] text-slate-900">
+      <JsonLd data={faqJsonLd(HOME2_FAQS)} />
       <Home2Header />
 
       <section className="relative min-h-[100svh] overflow-hidden" id="home" aria-label="Hero">
@@ -70,16 +55,6 @@ export default function Home() {
       <Home2Cta />
 
       <Home2Footer />
-      <Home2CookieConsent />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
     </div>
   );
 }

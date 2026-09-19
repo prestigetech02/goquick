@@ -1,92 +1,108 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { FluidButton } from "@/components/FluidButton";
+import { Home2Header } from "@/components/Home2Header";
+import { Home2Faq } from "@/components/Home2Faq";
+import { Home2Cta } from "@/components/Home2Cta";
+import { Home2Footer } from "@/components/Home2Footer";
 import { OurServicesGrid } from "@/components/OurServicesGrid";
 import { WhyChooseGoQuick } from "@/components/WhyChooseGoQuick";
-import { GetStartedCta } from "@/components/GetStartedCta";
-import { siteConfig, webAppLinks } from "@/lib/site";
+import { webAppLinks } from "@/lib/site";
+import { pageMetadata, breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = pageMetadata({
+  title: "Errand Services in Lagos | Pickup, Shopping, Queues",
   description:
-    "GoQuick offers reliable on-demand errand services designed to save you time—fast pickups, safe deliveries, and real-time tracking.",
-  alternates: { canonical: "/services" },
-};
+    "GoQuick errand services in Lagos: pickup and drop off, shopping, pharmacy runs, queues, food errands, domestics, and custom tasks.",
+  path: "/services",
+});
+
+function TitleSquiggle() {
+  return (
+    <svg
+      className="mx-auto mt-4 w-44 text-[#ffe600] sm:w-56"
+      viewBox="0 0 180 14"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Header />
+      <JsonLd
+        data={[
+          serviceJsonLd(),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+        ]}
+      />
+      <Home2Header />
 
-      <main className="min-h-[60vh] pb-16 pt-24 sm:pt-28 sm:pb-20 lg:pt-32">
-        <section
-          aria-labelledby="services-heading"
-          className="site-container grid min-w-0 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-8 xl:gap-12"
-        >
-          <div className="min-w-0 max-w-xl">
-            <p className="text-sm font-bold uppercase tracking-[0.16em] text-[var(--primary)]">
-              Our Services
-            </p>
-            <h1
-              id="services-heading"
-              className="mt-3 text-4xl font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:mt-4 sm:text-5xl lg:text-[3.25rem] xl:text-6xl"
+      <section
+        className="relative min-h-[100svh] overflow-hidden bg-[#8ec8ea]"
+        aria-labelledby="services-hero-heading"
+      >
+        <Image
+          src="/services-hero-bg.svg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-top"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#c8e8f6]/75 to-transparent sm:h-56"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-4xl flex-col items-center px-5 pb-[34vh] pt-28 text-center font-montserrat sm:px-8 sm:pb-[38vh] sm:pt-32 md:pt-36">
+          <span className="home2-street-tag bg-[#308030] text-[#ffe600]">Our services</span>
+          <h1
+            id="services-hero-heading"
+            className="mt-5 text-[2.35rem] font-black leading-[0.95] tracking-tight text-[#0d2412] sm:text-5xl md:text-6xl lg:text-[4.25rem]"
+          >
+            Everyday errands in Lagos,
+            <br />
+            delivered with <span className="text-[#308030]">ease</span>
+          </h1>
+          <TitleSquiggle />
+          <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:gap-4">
+            <a
+              href={webAppLinks.requestErrand()}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#308030] px-6 py-3.5 text-sm font-extrabold text-white shadow-[0_4px_0_#ffe600] transition hover:translate-y-px hover:bg-[#286828] hover:shadow-[0_3px_0_#ffe600] sm:w-auto sm:px-7 sm:text-base"
             >
-              Everyday errands,{" "}
-              <span style={{ color: "var(--primary)" }}>delivered with ease.</span>
-            </h1>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-slate-600 sm:mt-5 sm:text-lg">
-              {siteConfig.name} offers reliable on-demand services designed to save you time and get
-              things done, so you can focus on what truly matters.
-            </p>
-
-            <div className="mt-7 flex flex-wrap items-center gap-4 sm:mt-8 sm:gap-5">
-              <FluidButton href={webAppLinks.requestErrand()} variant="primary" showArrow>
-                Book an Errand
-              </FluidButton>
-              <Link
-                href="/how-it-works"
-                className="group inline-flex items-center gap-2.5 text-sm font-semibold text-slate-800 transition hover:text-[var(--primary)] sm:text-base"
-              >
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition group-hover:border-[var(--primary)]/30"
-                  aria-hidden
-                >
-                  <svg
-                    className="ml-0.5 h-3.5 w-3.5"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    style={{ color: "var(--primary)" }}
-                  >
-                    <path d="M8 5.14v13.72L19 12 8 5.14z" />
-                  </svg>
-                </span>
-                See how it works
-              </Link>
-            </div>
+              Book an errand
+              <span aria-hidden>→</span>
+            </a>
+            <a
+              href="/pricing"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border-[2.5px] border-[#0d2412] bg-white/80 px-6 py-3.5 text-sm font-extrabold text-[#0d2412] shadow-[0_4px_0_#ffe600] backdrop-blur-[2px] transition hover:translate-y-px hover:bg-white hover:shadow-[0_3px_0_#ffe600] sm:w-auto sm:px-7 sm:text-base"
+            >
+              See pricing
+              <span aria-hidden>→</span>
+            </a>
           </div>
+        </div>
+      </section>
 
-          <div className="relative flex min-w-0 justify-center lg:justify-end">
-            <Image
-              src="/services-hero.png"
-              alt={`${siteConfig.name} runner delivering a package with fast, safe, reliable, and trackable service`}
-              width={900}
-              height={900}
-              className="h-auto w-full max-w-lg object-contain sm:max-w-xl lg:max-w-none"
-              priority
-              sizes="(max-width: 1024px) 90vw, 55vw"
-            />
-          </div>
-        </section>
-
+      <main>
         <OurServicesGrid />
         <WhyChooseGoQuick />
-        <GetStartedCta className="mt-16 sm:mt-20 lg:mt-24" />
+        <Home2Faq />
+        <Home2Cta />
       </main>
 
-      <Footer />
+      <Home2Footer />
     </div>
   );
 }

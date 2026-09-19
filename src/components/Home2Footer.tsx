@@ -12,9 +12,9 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
 const quickLinks = [
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/pricing" },
   { label: "For Runners", href: "/runners" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "FAQ", href: "/faq" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },

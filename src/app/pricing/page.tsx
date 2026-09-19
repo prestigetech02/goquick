@@ -1,95 +1,72 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Home2Header } from "@/components/Home2Header";
+import { Home2Footer } from "@/components/Home2Footer";
+import { Home2Cta } from "@/components/Home2Cta";
 import { PricingPlans } from "@/components/PricingPlans";
 import { HowPricingWorks } from "@/components/HowPricingWorks";
-import { PricingFAQ } from "@/components/PricingFAQ";
-import { siteConfig } from "@/lib/site";
+import { PricingFAQ, PRICING_FAQS } from "@/components/PricingFAQ";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Pricing",
+export const metadata: Metadata = pageMetadata({
+  title: "Pricing in Lagos | Pay Per Errand",
   description:
-    "Simple, fair, transparent pricing from GoQuick. Whether you need something done or want to earn on your own terms, we keep it affordable.",
-  alternates: { canonical: "/pricing" },
-};
+    "Pay per errand with GoQuick in Lagos. No monthly fees for requesters. Free for runners to join. Transparent service fees.",
+  path: "/pricing",
+});
+
+function TitleSquiggle() {
+  return (
+    <svg
+      className="mx-auto mt-3 w-36 text-[#ffe600] sm:w-44"
+      viewBox="0 0 180 14"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <Header />
+    <div className="min-h-screen bg-[#e8f4ea] text-[#0d2412]">
+      <JsonLd
+        data={[
+          faqJsonLd(PRICING_FAQS),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Pricing", path: "/pricing" },
+          ]),
+        ]}
+      />
+      <Home2Header />
 
-      <main className="min-h-[60vh] pb-16 pt-24 sm:pt-28 sm:pb-20 lg:pt-32">
-        <section
-          aria-labelledby="pricing-heading"
-          className="site-container relative overflow-hidden"
-        >
-          <div className="grid min-w-0 items-center gap-8 lg:grid-cols-[1fr_minmax(0,28rem)_1fr] lg:gap-4 xl:gap-6">
-            {/* Left visual */}
-            <div
-              className="pricing-hero-fade relative order-2 flex min-w-0 justify-center lg:order-1 lg:justify-start"
-              style={{ animationDelay: "0.12s" }}
-            >
-              <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none">
-                <Image
-                  src="/pricing-left.png"
-                  alt={`${siteConfig.name} app with packages and shopping bag`}
-                  width={900}
-                  height={900}
-                  className="h-auto w-full object-contain"
-                  priority
-                  sizes="(max-width: 1024px) 60vw, 32vw"
-                />
-              </div>
-            </div>
+      <section
+        className="relative overflow-hidden bg-[#308030] text-[#e8f4ea]"
+        aria-labelledby="pricing-heading"
+      >
+        <div className="mx-auto flex max-w-5xl flex-col items-center px-5 pb-10 pt-28 text-center font-montserrat sm:px-8 sm:pb-12 sm:pt-32">
+          <h1
+            id="pricing-heading"
+            className="text-[1.65rem] font-black leading-none tracking-tight whitespace-nowrap sm:text-4xl md:text-5xl"
+          >
+            Simple <span className="text-[#ffe600]">pricing</span>
+          </h1>
+          <TitleSquiggle />
+        </div>
+      </section>
 
-            {/* Center copy */}
-            <div
-              className="pricing-hero-fade order-1 mx-auto max-w-xl px-2 text-center lg:order-2 lg:px-0"
-              style={{ animationDelay: "0s" }}
-            >
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--primary)] sm:text-sm">
-                Simple. Fair. Transparent.
-              </p>
-              <h1
-                id="pricing-heading"
-                className="mt-4 text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-900 sm:mt-5 sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-5xl"
-              >
-                Pricing that works for{" "}
-                <span style={{ color: "var(--primary)" }}>everyone.</span>
-              </h1>
-              <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-slate-600 sm:mt-5 sm:text-lg">
-                Whether you need something done or want to earn on your own terms,{" "}
-                {siteConfig.name} keeps it simple and affordable.
-              </p>
-            </div>
-
-            {/* Right visual */}
-            <div
-              className="pricing-hero-fade relative order-3 flex min-w-0 justify-center lg:justify-end"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="relative w-full max-w-[260px] sm:max-w-[320px] lg:max-w-none">
-                <Image
-                  src="/pricing-right.png"
-                  alt={`${siteConfig.name} runner holding a delivery package`}
-                  width={900}
-                  height={900}
-                  className="h-auto w-full object-contain"
-                  priority
-                  sizes="(max-width: 1024px) 55vw, 32vw"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <PricingPlans />
-        <HowPricingWorks />
-        <PricingFAQ />
-      </main>
-
-      <Footer />
+      <PricingPlans />
+      <HowPricingWorks />
+      <PricingFAQ />
+      <Home2Cta />
+      <Home2Footer />
     </div>
   );
 }

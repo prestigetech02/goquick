@@ -8,7 +8,7 @@ function normalizeSiteUrl(url: string): string {
 export const siteConfig = {
   name: "GoQuick",
   description:
-    "GoQuick helps you book trusted runners for pickups, deliveries, and daily tasks across your city.",
+    "GoQuick is an errand service in Lagos. Book trusted runners for pickups, deliveries, shopping, pharmacy runs, and daily tasks.",
   siteUrl: normalizeSiteUrl(
     process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallbackSiteUrl,
   ),

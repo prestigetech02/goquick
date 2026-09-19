@@ -11,6 +11,11 @@ const ROLE_OPTIONS = [
 
 const DELETION_API = `${siteConfig.apiBaseUrl}/account-deletion-request`;
 
+const fieldClass =
+  "mt-1.5 w-full rounded-xl border-[2.5px] border-[#0d2412] bg-white px-4 py-3 font-montserrat text-sm font-semibold text-[#0d2412] outline-none transition placeholder:text-[#0d2412]/40 focus:bg-[#e8f4ea]";
+
+const labelClass = "font-montserrat text-sm font-extrabold text-[#0d2412]";
+
 export function AccountDeletionForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -90,8 +95,8 @@ export function AccountDeletionForm() {
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
-      <div className="space-y-1.5">
-        <label htmlFor="del-name" className="text-base font-medium text-slate-800">
+      <div>
+        <label htmlFor="del-name" className={labelClass}>
           Full name
         </label>
         <input
@@ -100,12 +105,12 @@ export function AccountDeletionForm() {
           type="text"
           required
           placeholder="Name on your GoQuick account"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          className={fieldClass}
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="del-email" className="text-base font-medium text-slate-800">
+      <div>
+        <label htmlFor="del-email" className={labelClass}>
           Email address
         </label>
         <input
@@ -114,12 +119,12 @@ export function AccountDeletionForm() {
           type="email"
           required
           placeholder="Email registered on your account"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          className={fieldClass}
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="del-phone" className="text-base font-medium text-slate-800">
+      <div>
+        <label htmlFor="del-phone" className={labelClass}>
           Phone number
         </label>
         <input
@@ -130,12 +135,12 @@ export function AccountDeletionForm() {
           inputMode="numeric"
           pattern="[0-9]{11}"
           placeholder="08012345678"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          className={fieldClass}
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="del-role" className="text-base font-medium text-slate-800">
+      <div>
+        <label htmlFor="del-role" className={labelClass} id="del-role-label">
           Account type
         </label>
         <Dropdown
@@ -144,50 +149,53 @@ export function AccountDeletionForm() {
           options={ROLE_OPTIONS}
           defaultValue="buyer"
           placeholder="Select account type"
+          variant="street"
+          className="mt-1.5"
         />
       </div>
 
-      <div className="space-y-1.5">
-        <label htmlFor="del-reason" className="text-base font-medium text-slate-800">
-          Reason (optional)
+      <div>
+        <label htmlFor="del-reason" className={labelClass}>
+          Reason <span className="font-semibold text-[#0d2412]/45">(optional)</span>
         </label>
         <textarea
           id="del-reason"
           name="reason"
           rows={3}
-          placeholder="Tell us why you're leaving (optional)"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+          placeholder="Tell us why you're leaving"
+          className={`${fieldClass} resize-y`}
         />
       </div>
 
-      <label className="flex items-start gap-3 text-sm text-slate-700">
+      <label className="flex cursor-pointer items-start gap-3 rounded-xl border-[2.5px] border-[#0d2412] bg-[#e8f4ea] px-4 py-3.5">
         <input
           type="checkbox"
           checked={confirmed}
           onChange={(e) => setConfirmed(e.target.checked)}
-          className="mt-1 h-4 w-4 rounded border-slate-300 text-[var(--primary)] focus:ring-[var(--primary)]"
+          className="mt-0.5 h-5 w-5 shrink-0 accent-[#308030]"
         />
-        <span>
+        <span className="font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/80">
           I understand that deleting my GoQuick account is permanent. I will lose access to my
           errands, wallet balance (if any), messages, and profile data, subject to our data
-          retention policy below.
+          retention policy.
         </span>
       </label>
 
-      <div className="space-y-2">
+      <div className="space-y-3 pt-1">
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex w-full items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 text-base font-medium text-white shadow-sm transition hover:bg-[var(--primary-hover)] disabled:opacity-70 sm:w-auto"
+          className="home2-create-cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#1b5c2a] px-6 py-3.5 font-montserrat text-sm font-extrabold text-[#e8f4ea] transition hover:bg-[#164a22] disabled:opacity-70 sm:w-auto sm:px-7 sm:text-base"
         >
           {status === "loading" ? "Submitting…" : "Submit deletion request"}
+          {status !== "loading" ? <span aria-hidden>→</span> : null}
         </button>
-        {status === "success" && (
-          <p className="text-base font-medium text-[var(--primary)]">{statusMessage}</p>
-        )}
-        {status === "error" && (
-          <p className="text-base font-medium text-red-600">{statusMessage}</p>
-        )}
+        {status === "success" ? (
+          <p className="font-montserrat text-sm font-semibold text-[#308030]">{statusMessage}</p>
+        ) : null}
+        {status === "error" ? (
+          <p className="font-montserrat text-sm font-semibold text-[#e23d28]">{statusMessage}</p>
+        ) : null}
       </div>
     </form>
   );

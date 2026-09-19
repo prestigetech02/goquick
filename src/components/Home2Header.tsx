@@ -15,6 +15,7 @@ const navItems: readonly NavItem[] = [
     children: [
       { label: "About", href: "/about" },
       { label: "Careers", href: "/careers" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
   { label: "Services", href: "/services" },
@@ -43,6 +44,29 @@ function NavZigzag({ position }: { position: "top" | "bottom" }) {
         strokeLinejoin="round"
       />
     </svg>
+  );
+}
+
+function DropdownCircle() {
+  return (
+    <span
+      className="ml-1.5 inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border-[1.6px] border-current"
+      aria-hidden
+    >
+      <svg
+        className="h-2 w-2 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+        viewBox="0 0 12 12"
+        fill="none"
+      >
+        <path
+          d="M2.5 4.5 L6 8 L9.5 4.5"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -116,12 +140,11 @@ export function Home2Header() {
                       aria-current={current ? "page" : undefined}
                       aria-haspopup="menu"
                     >
-                      <NavZigzag position="top" />
                       {item.label}
-                      <NavZigzag position="bottom" />
+                      <DropdownCircle />
                     </button>
                     <div className="invisible absolute left-1/2 top-full z-50 w-44 -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                      <div className="overflow-hidden rounded-2xl border-[2.5px] border-[#0d2412] bg-white py-1 shadow-[4px_4px_0_#ffe600]">
+                      <div className="overflow-hidden rounded-2xl border-[2.5px] border-[#0d2412] bg-white py-1 shadow-[4px_4px_0_#dbab29]">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
@@ -199,8 +222,22 @@ export function Home2Header() {
               if (isDropdown(item)) {
                 return (
                   <div key={item.label} className="pb-1">
-                    <p className="px-4 pb-1 pt-1 text-[0.65rem] font-extrabold uppercase tracking-[0.12em] text-[#0d2412]/45">
+                    <p className="flex items-center gap-1.5 px-4 pb-1 pt-1 text-[0.65rem] font-extrabold uppercase tracking-[0.12em] text-[#0d2412]/45">
                       {item.label}
+                      <span
+                        className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full border border-current"
+                        aria-hidden
+                      >
+                        <svg className="h-1.5 w-1.5" viewBox="0 0 12 12" fill="none">
+                          <path
+                            d="M2.5 4.5 L6 8 L9.5 4.5"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
                     </p>
                     {item.children.map((child) => (
                       <Link

@@ -9,7 +9,6 @@ const STATIC_PAGES: { url: string; changeFrequency: "weekly" | "monthly" | "year
   { url: "contact", changeFrequency: "monthly", priority: 0.9 },
   { url: "careers", changeFrequency: "weekly", priority: 0.9 },
   { url: "runners", changeFrequency: "monthly", priority: 0.9 },
-  { url: "how-it-works", changeFrequency: "monthly", priority: 0.9 },
   { url: "services", changeFrequency: "monthly", priority: 0.9 },
   { url: "pricing", changeFrequency: "monthly", priority: 0.9 },
   { url: "faq", changeFrequency: "monthly", priority: 0.9 },
@@ -45,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = STATIC_PAGES.map(({ url, changeFrequency, priority }) => ({
-    url: url ? `${base}/${url}` : base,
+    url: url ? `${base}/${url}/` : `${base}/`,
     lastModified: now,
     changeFrequency,
     priority,
@@ -53,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const slugs = await getBlogSlugs();
   const blogEntries: MetadataRoute.Sitemap = slugs.map(({ slug, lastModified }) => ({
-    url: `${base}/blog/${slug}`,
+    url: `${base}/blog/${slug}/`,
     lastModified: lastModified ? new Date(lastModified) : now,
     changeFrequency: "weekly" as const,
     priority: 0.6,

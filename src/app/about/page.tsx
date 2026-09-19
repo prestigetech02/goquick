@@ -6,13 +6,15 @@ import { Home2Faq } from "@/components/Home2Faq";
 import { Home2Cta } from "@/components/Home2Cta";
 import { Home2Footer } from "@/components/Home2Footer";
 import { siteConfig, webAppLinks } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
+export const metadata: Metadata = pageMetadata({
+  title: "About | Errand Platform in Lagos",
   description:
-    "Learn about GoQuick: we connect you with trusted runners for errands, deliveries, and daily tasks so you can reclaim your time.",
-  alternates: { canonical: "/about" },
-};
+    "GoQuick connects you with verified runners in Lagos for errands, deliveries, and daily tasks so you can reclaim your time.",
+  path: "/about",
+});
 
 function TitleSquiggle() {
   return (
@@ -54,6 +56,12 @@ function FlatCloud({ className }: { className?: string }) {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <Home2Header />
 
       <section

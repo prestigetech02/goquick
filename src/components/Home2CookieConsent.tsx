@@ -2,39 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const STORAGE_KEY = "goquick-cookie-consent";
-
-type ConsentChoice = "accepted" | "necessary";
-
-function readConsent(): ConsentChoice | null {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as { value?: string };
-    return parsed.value === "accepted" || parsed.value === "necessary" ? parsed.value : null;
-  } catch {
-    return null;
-  }
-}
-
-function writeConsent(value: ConsentChoice) {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ value, at: Date.now() }));
-  } catch {
-    // Ignore storage failures (private mode, blocked storage).
-  }
-}
+import { readCookieConsent, writeCookieConsent, type ConsentChoice } from "@/lib/cookie-consent";
 
 export function Home2CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(!readConsent());
+    setVisible(!readCookieConsent());
   }, []);
 
   function choose(value: ConsentChoice) {
-    writeConsent(value);
+    writeCookieConsent(value);
     setVisible(false);
   }
 

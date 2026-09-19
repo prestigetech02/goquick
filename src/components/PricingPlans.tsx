@@ -1,5 +1,4 @@
-import { FluidButton, FluidStoreButton } from "@/components/FluidButton";
-import { webAppLinks } from "@/lib/site";
+import { siteConfig, webAppLinks } from "@/lib/site";
 
 const customerFeatures = [
   "Transparent pricing",
@@ -15,39 +14,19 @@ const runnerFeatures = [
   "Bonuses & incentives",
 ];
 
-function CheckIcon() {
+function TitleSquiggle() {
   return (
-    <span
-      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white"
-      style={{ backgroundColor: "var(--primary)" }}
+    <svg
+      className="mt-3 w-40 text-[#ffe600] sm:w-52"
+      viewBox="0 0 180 14"
+      fill="none"
       aria-hidden
     >
-      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-      </svg>
-    </span>
-  );
-}
-
-function CustomerIcon() {
-  return (
-    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
       <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
         strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-      />
-    </svg>
-  );
-}
-
-function RunnerIcon() {
-  return (
-    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
       />
     </svg>
   );
@@ -56,111 +35,80 @@ function RunnerIcon() {
 export function PricingPlans() {
   return (
     <section
-      className="site-container mt-14 sm:mt-16 lg:mt-20"
+      className="relative overflow-hidden bg-[#e8f4ea] text-[#0d2412]"
       aria-labelledby="pricing-plans-heading"
     >
-      <h2 id="pricing-plans-heading" className="sr-only">
-        Pricing for customers and runners
-      </h2>
+      <div className="site-container py-12 sm:py-16 lg:py-20">
+        <div className="max-w-3xl">
+          <span className="home2-street-tag bg-[#308030] text-[#ffe600]">Plans</span>
+          <h2
+            id="pricing-plans-heading"
+            className="mt-5 font-montserrat text-[2.15rem] font-black leading-[0.95] tracking-tight text-[#308030] sm:text-5xl lg:text-[3.25rem]"
+          >
+            Pay when you
+            <br />
+            need it
+          </h2>
+          <TitleSquiggle />
+        </div>
 
-      <div
-        className="relative overflow-hidden rounded-[1.75rem] px-4 py-8 sm:rounded-[2rem] sm:px-6 sm:py-10 lg:px-4 lg:py-10"
-        style={{ backgroundColor: "#f3f4f3" }}
-      >
-        <div className="relative grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-0">
-          {/* Vertical dashed divider (desktop) */}
-          <div
-            className="pointer-events-none absolute inset-y-6 left-1/2 hidden w-px -translate-x-1/2 border-l border-dashed border-slate-300/90 lg:block"
-            aria-hidden
-          />
-
-          {/* For Customers */}
-          <article className="flex flex-col rounded-[1.5rem] bg-white p-7 shadow-[0_2px_12px_rgba(15,23,42,0.04)] sm:p-8 lg:mx-4 lg:rounded-[1.75rem] lg:rounded-r-2xl lg:px-10 lg:py-10 xl:mx-6 xl:px-12">
-            <div className="flex flex-col items-center text-center">
-              <span
-                className="flex h-14 w-14 items-center justify-center rounded-full"
-                style={{
-                  backgroundColor: "color-mix(in srgb, var(--primary) 14%, white)",
-                  color: "var(--primary)",
-                }}
-              >
-                <CustomerIcon />
-              </span>
-              <h3 className="mt-4 text-lg font-bold text-slate-900 sm:text-xl">For Customers</h3>
-              <p className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-                <span className="block" style={{ color: "var(--primary)" }}>
-                  Pay
-                </span>
-                <span className="block text-slate-900">per errand</span>
-              </p>
-              <p className="mt-3 max-w-[17rem] text-sm leading-relaxed text-slate-500 sm:text-[0.95rem]">
-                You only pay for what you need. No monthly fees or hidden charges.
-              </p>
-            </div>
-
-            <div className="my-6 border-t border-slate-200/80" />
-
-            <ul className="mx-auto w-full max-w-[15rem] space-y-3.5">
+        <div className="mt-12 grid gap-5 sm:mt-16 lg:grid-cols-2">
+          <article className="home2-service-card flex flex-col bg-white p-5 sm:p-8">
+            <span className="home2-street-tag w-fit bg-[#308030] text-[#ffe600]">Requesters</span>
+            <h3 className="mt-5 font-montserrat text-[1.85rem] font-black leading-[0.95] tracking-tight text-[#308030] sm:text-4xl">
+              Pay
+              <br />
+              per errand
+            </h3>
+            <p className="mt-4 max-w-[28ch] font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/75 sm:text-base">
+              You only pay for what you need. No monthly fees or hidden charges.
+            </p>
+            <ul className="mt-6 flex flex-1 flex-col gap-3">
               {customerFeatures.map((feature) => (
-                <li key={feature} className="flex items-start gap-3 text-sm font-medium text-slate-800 sm:text-[0.95rem]">
-                  <CheckIcon />
-                  <span>{feature}</span>
+                <li key={feature} className="flex items-center gap-3">
+                  <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#308030]" aria-hidden />
+                  <span className="font-montserrat text-sm font-extrabold text-[#0d2412] sm:text-base">
+                    {feature}
+                  </span>
                 </li>
               ))}
             </ul>
-
-            <div className="mt-auto flex justify-center pt-8">
-              <FluidButton
-                href={webAppLinks.requestErrand()}
-                variant="primary"
-                showArrow
-                className="min-w-[13rem]"
-              >
-                Book an Errand
-              </FluidButton>
-            </div>
+            <a
+              href={webAppLinks.requestErrand()}
+              className="home2-create-cta mt-8 inline-flex w-fit items-center justify-center gap-2 rounded-full bg-[#1b5c2a] px-6 py-3 font-montserrat text-sm font-extrabold text-[#e8f4ea] transition hover:bg-[#164a22]"
+            >
+              Book an errand
+              <span aria-hidden>→</span>
+            </a>
           </article>
 
-          {/* For Runners */}
-          <article className="flex flex-col rounded-[1.5rem] bg-white p-7 shadow-[0_2px_12px_rgba(15,23,42,0.04)] sm:p-8 lg:mx-4 lg:rounded-[1.75rem] lg:rounded-l-2xl lg:px-10 lg:py-10 xl:mx-6 xl:px-12">
-            <div className="flex flex-col items-center text-center">
-              <span
-                className="flex h-14 w-14 items-center justify-center rounded-full"
-                style={{
-                  backgroundColor: "color-mix(in srgb, var(--primary) 14%, white)",
-                  color: "var(--primary)",
-                }}
-              >
-                <RunnerIcon />
-              </span>
-              <h3 className="mt-4 text-lg font-bold text-slate-900 sm:text-xl">For Runners</h3>
-              <p className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-                <span className="block" style={{ color: "var(--primary)" }}>
-                  0%
-                </span>
-                <span className="block text-slate-900">to join</span>
-              </p>
-              <p className="mt-3 max-w-[17rem] text-sm leading-relaxed text-slate-500 sm:text-[0.95rem]">
-                It&apos;s free to sign up. You keep more of what you earn.
-              </p>
-            </div>
-
-            <div className="my-6 border-t border-slate-200/80" />
-
-            <ul className="mx-auto w-full max-w-[15rem] space-y-3.5">
+          <article className="home2-service-card flex flex-col bg-[#308030] p-5 text-[#e8f4ea] sm:p-8">
+            <span className="home2-street-tag w-fit bg-[#0d2412] text-[#ffe600]">Runners</span>
+            <h3 className="mt-5 font-montserrat text-[1.85rem] font-black leading-[0.95] tracking-tight sm:text-4xl">
+              0%
+              <br />
+              to join
+            </h3>
+            <p className="mt-4 max-w-[28ch] font-montserrat text-sm font-semibold leading-relaxed text-[#e8f4ea]/85 sm:text-base">
+              It&apos;s free to sign up. You keep more of what you earn.
+            </p>
+            <ul className="mt-6 flex flex-1 flex-col gap-3">
               {runnerFeatures.map((feature) => (
-                <li key={feature} className="flex items-start gap-3 text-sm font-medium text-slate-800 sm:text-[0.95rem]">
-                  <CheckIcon />
-                  <span>{feature}</span>
+                <li key={feature} className="flex items-center gap-3">
+                  <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#ffe600]" aria-hidden />
+                  <span className="font-montserrat text-sm font-extrabold sm:text-base">{feature}</span>
                 </li>
               ))}
             </ul>
-
-            <div className="mt-auto flex justify-center pt-8">
-              <FluidStoreButton variant="primary" showArrow className="min-w-[13rem]">
-                Become a Runner
-              </FluidStoreButton>
-            </div>
+            <a
+              href={siteConfig.stores.playStore}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex w-fit items-center justify-center gap-2 rounded-full bg-[#0d2412] px-6 py-3 font-montserrat text-sm font-extrabold text-[#ffe600] shadow-[0_4px_0_#ffe600] transition hover:translate-y-px hover:bg-[#08180c] hover:shadow-[0_3px_0_#ffe600]"
+            >
+              Become a runner
+              <span aria-hidden>→</span>
+            </a>
           </article>
         </div>
       </div>

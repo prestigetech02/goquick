@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Home2Header } from "@/components/Home2Header";
+import { Home2Footer } from "@/components/Home2Footer";
 import { siteConfig } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
+import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 // Required for "output: export" — must be exported and return at least one param set (Next.js 16).
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -74,6 +76,24 @@ function postImageSrc(image: string | null): string | null {
   return `${base}${image.startsWith("/") ? "" : "/"}${image}`;
 }
 
+function TitleSquiggle() {
+  return (
+    <svg
+      className="mx-auto mt-3 w-36 text-[#ffe600] sm:w-44"
+      viewBox="0 0 180 14"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M2 10 C18 2 28 12 44 8 C60 4 70 12 86 7 C102 2 112 12 128 8 C144 4 156 11 178 6"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -81,11 +101,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const res = await getPost(slug);
   const post = res?.data;
   if (!post) return { title: "Post" };
-  return {
+  const image = postImageSrc(post.image);
+  return pageMetadata({
     title: post.title,
-    description: post.excerpt || undefined,
-    alternates: { canonical: `/blog/${slug}` },
-  };
+    description: post.excerpt || `Read ${post.title} on the GoQuick blog.`,
+    path: `/blog/${slug}`,
+    image,
+    type: "article",
+    publishedTime: post.published_at,
+    authors: post.author?.name ? [post.author.name] : undefined,
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -97,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const imgSrc = postImageSrc(post.image);
-  const canonicalUrl = `${siteConfig.siteUrl.replace(/\/$/, "")}/blog/${post.slug}`;
+  const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -105,79 +130,101 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.excerpt || undefined,
     url: canonicalUrl,
+    mainEntityOfPage: canonicalUrl,
     datePublished: post.published_at || undefined,
     dateModified: post.published_at || undefined,
     ...(post.author?.name && { author: { "@type": "Person", name: post.author.name } }),
     ...(imgSrc && { image: imgSrc }),
-    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.siteUrl },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+      logo: { "@type": "ImageObject", url: absoluteUrl("/logo.png") },
+    },
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+    <div className="min-h-screen bg-[#e8f4ea] text-[#0d2412]">
+      <JsonLd
+        data={[
+          articleSchema,
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
       />
-      <Header />
+      <Home2Header />
 
-      <main className="mx-auto min-h-[60vh] w-full max-w-3xl px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-10">
-        <nav className="mb-6 text-sm" aria-label="Breadcrumb">
-          <Link href="/blog" className="text-[var(--primary)] hover:underline">
-            Blog
-          </Link>
-          <span className="mx-2 text-slate-400">/</span>
-          <span className="text-slate-600">{post.title}</span>
-        </nav>
+      <section
+        className="relative overflow-hidden bg-[#308030] text-[#e8f4ea]"
+        aria-label="Blog"
+      >
+        <div className="mx-auto flex max-w-5xl flex-col items-center px-5 pb-10 pt-28 text-center font-montserrat sm:px-8 sm:pb-12 sm:pt-32">
+          <p className="text-[1.85rem] font-black leading-none tracking-tight whitespace-nowrap sm:text-4xl md:text-5xl">
+            GoQuick <span className="text-[#ffe600]">Blog</span>
+          </p>
+          <TitleSquiggle />
+        </div>
+      </section>
 
-        <article>
-          <header className="mb-8">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      <main className="site-container py-12 sm:py-16 lg:py-20">
+        <article className="home2-service-card mx-auto max-w-3xl overflow-hidden bg-white">
+          {imgSrc ? (
+            <div className="relative aspect-video w-full overflow-hidden bg-[color-mix(in_srgb,#308030_16%,white)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgSrc} alt={post.title} className="h-full w-full object-cover" loading="lazy" />
+            </div>
+          ) : null}
+
+          <div className="p-5 sm:p-10">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1 font-montserrat text-sm font-extrabold text-[#308030] transition hover:text-[#1b5c2a]"
+            >
+              <span aria-hidden>←</span>
+              All posts
+            </Link>
+
+            <h1 className="mt-5 font-montserrat text-[1.85rem] font-black leading-[0.95] tracking-tight text-[#308030] sm:text-4xl">
               {post.title}
             </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500">
-              <time dateTime={post.published_at ?? undefined}>
-                {formatDate(post.published_at)}
-              </time>
-              {post.author?.name && <span>By {post.author.name}</span>}
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {post.published_at ? (
+                <time
+                  className="home2-street-tag bg-[#e8f4ea] text-[#0d2412]"
+                  dateTime={post.published_at}
+                >
+                  {formatDate(post.published_at)}
+                </time>
+              ) : null}
+              {post.author?.name ? (
+                <span className="home2-street-tag bg-[#308030] text-[#ffe600]">
+                  {post.author.name}
+                </span>
+              ) : null}
             </div>
-          </header>
 
-          {imgSrc && (
-            <div className="relative mb-8 aspect-video w-full overflow-hidden rounded-xl bg-slate-100">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={imgSrc}
-                alt=""
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
+            <div className="mt-8 max-w-none font-montserrat text-sm font-semibold leading-relaxed text-[#0d2412]/80 sm:text-base [&_a]:font-extrabold [&_a]:text-[#1b5c2a] [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-8 [&_h2]:font-montserrat [&_h2]:text-xl [&_h2]:font-black [&_h2]:tracking-tight [&_h2]:text-[#308030] [&_h3]:mt-6 [&_h3]:font-montserrat [&_h3]:text-lg [&_h3]:font-black [&_h3]:text-[#308030] [&_li]:mt-1 [&_p]:mb-4 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-5">
+              {post.body.includes("<") ? (
+                <div dangerouslySetInnerHTML={{ __html: post.body }} />
+              ) : (
+                post.body
+                  .split(/\n\n+/)
+                  .filter((p) => p.trim())
+                  .map((p, i) => (
+                    <p key={i} className="mb-4">
+                      {p}
+                    </p>
+                  ))
+              )}
             </div>
-          )}
-
-          <div className="prose prose-slate max-w-none prose-headings:font-semibold prose-p:text-slate-700 prose-a:text-[var(--primary)] prose-a:no-underline hover:prose-a:underline">
-            {post.body.includes("<") ? (
-              <div dangerouslySetInnerHTML={{ __html: post.body }} />
-            ) : (
-              post.body
-                .split(/\n\n+/)
-                .filter((p) => p.trim())
-                .map((p, i) => (
-                  <p key={i} className="mb-4 text-slate-700">
-                    {p}
-                  </p>
-                ))
-            )}
           </div>
         </article>
-
-        <p className="mt-12">
-          <Link href="/blog" className="font-medium text-[var(--primary)] hover:underline">
-            ← Back to blog
-          </Link>
-        </p>
       </main>
 
-      <Footer />
+      <Home2Footer />
     </div>
   );
 }

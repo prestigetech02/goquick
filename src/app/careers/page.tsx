@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { CareersPageContent } from "./CareersPageContent";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Careers",
+export const metadata: Metadata = pageMetadata({
+  title: "Careers at GoQuick Lagos",
   description:
-    "Join GoQuick. We're building the platform for errands and deliveries. See open roles and join our team.",
-  alternates: { canonical: "/careers" },
-};
+    "Join GoQuick in Lagos. We're hiring engineers, operations, and support to build errand and runner services.",
+  path: "/careers",
+});
 
 const CAREERS_EMAIL = "careers@goquickapp.com.ng";
 
@@ -36,9 +38,17 @@ const openPositions = [
 
 export default function CareersPage() {
   return (
-    <CareersPageContent
-      openPositions={openPositions}
-      careersEmail={CAREERS_EMAIL}
-    />
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Careers", path: "/careers" },
+        ])}
+      />
+      <CareersPageContent
+        openPositions={openPositions}
+        careersEmail={CAREERS_EMAIL}
+      />
+    </>
   );
 }

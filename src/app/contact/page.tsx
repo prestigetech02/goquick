@@ -5,13 +5,15 @@ import { Home2Cta } from "@/components/Home2Cta";
 import { Home2Footer } from "@/components/Home2Footer";
 import { ContactForm } from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Lagos | Errand Support",
   description:
-    "Contact GoQuick for errand support, runner signups, payment help, partnerships, and feedback.",
-  alternates: { canonical: "/contact" },
-};
+    "Contact GoQuick in Lagos for errand support, runner signups, payment help, partnerships, and feedback.",
+  path: "/contact",
+});
 
 function TitleSquiggle({ className = "mx-auto mt-4 w-44 text-[#ffe600] sm:w-56" }: { className?: string }) {
   return (
@@ -48,6 +50,12 @@ const channels = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <Home2Header />
 
       <section

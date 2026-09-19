@@ -5,13 +5,15 @@ import { Home2Cta } from "@/components/Home2Cta";
 import { Home2Footer } from "@/components/Home2Footer";
 import { RunnersFeatures } from "@/components/RunnersFeatures";
 import { siteConfig } from "@/lib/site";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Become a GoRunner",
+export const metadata: Metadata = pageMetadata({
+  title: "Become a GoQuick Runner in Lagos",
   description:
-    "Download the GoQuick runner app, run errands at your pace, and earn extra in Lagos.",
-  alternates: { canonical: "/runners" },
-};
+    "Download the GoQuick runner app, get verified, pick errands around you in Lagos, and earn extra at your own pace.",
+  path: "/runners",
+});
 
 function TitleSquiggle() {
   return (
@@ -34,6 +36,12 @@ function TitleSquiggle() {
 export default function RunnersPage() {
   return (
     <div className="min-h-screen bg-[#e8f4ea] text-[#0d2412]">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Runners", path: "/runners" },
+        ])}
+      />
       <Home2Header />
 
       <section
