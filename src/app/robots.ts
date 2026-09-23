@@ -1,14 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { isIndexableProduction, siteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  const isProduction = process.env.VERCEL_ENV === "production";
-
   return {
     rules: [
-      isProduction
+      isIndexableProduction
         ? {
             userAgent: "*",
             allow: "/",
@@ -19,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
             disallow: "/",
           },
     ],
+
     sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
     host: siteConfig.siteUrl,
   };

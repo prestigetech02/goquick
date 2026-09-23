@@ -1,6 +1,16 @@
 const fallbackSiteUrl = "https://goquickapp.com.ng";
 const fallbackWebAppUrl = "https://app.goquickapp.com.ng";
 
+/**
+ * Allow Google to index only real production builds.
+ * Vercel preview sets VERCEL_ENV=preview (keep noindex).
+ * aaPanel static export has no VERCEL_ENV; `next build` sets NODE_ENV=production.
+ */
+export const isIndexableProduction = process.env.VERCEL_ENV
+  ? process.env.VERCEL_ENV === "production"
+  : process.env.NODE_ENV === "production";
+
+
 function normalizeSiteUrl(url: string): string {
   return url.endsWith("/") ? url.slice(0, -1) : url;
 }

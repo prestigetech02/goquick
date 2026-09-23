@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/lib/site";
+import { isIndexableProduction, siteConfig } from "@/lib/site";
 import { Home2CookieConsent } from "@/components/Home2CookieConsent";
 import { JsonLd } from "@/components/JsonLd";
 import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -50,24 +50,23 @@ export const metadata: Metadata = {
     creator: siteConfig.social.twitterHandle,
     images: ["/logo.png"],
   },
-  robots:
-    process.env.VERCEL_ENV === "production"
-      ? {
+  robots: isIndexableProduction
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
           index: true,
           follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-snippet": -1,
-            "max-image-preview": "large",
-            "max-video-preview": -1,
-          },
-        }
-      : {
-          index: false,
-          follow: false,
-          googleBot: { index: false, follow: false },
+          "max-snippet": -1,
+          "max-image-preview": "large",
+          "max-video-preview": -1,
         },
+      }
+    : {
+        index: false,
+        follow: false,
+        googleBot: { index: false, follow: false },
+      },
 };
 
 export default function RootLayout({
