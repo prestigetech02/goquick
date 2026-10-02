@@ -140,6 +140,70 @@ export function formatBlogDate(iso: string | null): string {
   }
 }
 
+/**
+ * Counts one view per post per browser session, then reports active reading time and scroll depth
+ * once when the reader leaves. Returns a cleanup that also reports, for in-app navigation.
+ */
+export function startBlogReadTracking(slug: string): () => void {
+  if (typeof window === "undefined" || !slug) return () => {};
+  const base = `${API_BASE}/blog/posts/${encodeURIComponent(slug)}`;
+
+  const viewedKey = `gq_blog_viewed_${slug}`;
+  try {
+    if (!sessionStorage.getItem(viewedKey)) {
+      sessionStorage.setItem(viewedKey, "1");
+      void fetch(`${base}/view`, { method: "POST", keepalive: true }).catch(() => {});
+    }
+  } catch {
+    void fetch(`${base}/view`, { method: "POST", keepalive: true }).catch(() => {});
+  }
+
+  let activeMs = 0;
+  let visibleSince = document.visibilityState === "visible" ? Date.now() : null;
+  let maxScrollPct = 0;
+  let reported = false;
+
+  const measureScroll = () => {
+    const doc = document.documentElement;
+    const scrollable = doc.scrollHeight - window.innerHeight;
+    const pct = scrollable <= 0 ? 100 : ((window.scrollY + window.innerHeight) / doc.scrollHeight) * 100;
+    maxScrollPct = Math.max(maxScrollPct, Math.min(100, Math.round(pct)));
+  };
+
+  const report = () => {
+    if (reported) return;
+    if (visibleSince != null) activeMs += Date.now() - visibleSince;
+    visibleSince = null;
+    const seconds = Math.round(activeMs / 1000);
+    if (seconds <= 0) return;
+    reported = true;
+    const body = new URLSearchParams({ seconds: String(seconds), scroll_pct: String(maxScrollPct) });
+    if (!navigator.sendBeacon?.(`${base}/read`, body)) {
+      void fetch(`${base}/read`, { method: "POST", body, keepalive: true }).catch(() => {});
+    }
+  };
+
+  const onVisibility = () => {
+    if (document.visibilityState === "hidden") {
+      report();
+    } else if (!reported) {
+      visibleSince = Date.now();
+    }
+  };
+
+  measureScroll();
+  window.addEventListener("scroll", measureScroll, { passive: true });
+  document.addEventListener("visibilitychange", onVisibility);
+  window.addEventListener("pagehide", report);
+
+  return () => {
+    report();
+    window.removeEventListener("scroll", measureScroll);
+    document.removeEventListener("visibilitychange", onVisibility);
+    window.removeEventListener("pagehide", report);
+  };
+}
+
 export function blogImageSrc(image: string | null): string | null {
   if (!image) return null;
   if (image.startsWith("http")) return image;

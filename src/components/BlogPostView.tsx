@@ -9,6 +9,7 @@ import {
   blogImageSrc,
   fetchBlogPost,
   formatBlogDate,
+  startBlogReadTracking,
   type BlogPostDetail,
   type BlogSidebarData,
 } from "@/lib/blog";
@@ -88,6 +89,12 @@ export function BlogPostView({ slug, initialPost, initialSidebar, prebuiltSlugs 
       cancelled = true;
     };
   }, [slug, initialPost]);
+
+  const ready = state.status === "ready";
+  useEffect(() => {
+    if (!ready) return;
+    return startBlogReadTracking(slug);
+  }, [ready, slug]);
 
   const related = state.status === "ready" ? (state.post.related ?? []) : [];
   const sidebar = (

@@ -15,6 +15,7 @@ const navItems: readonly NavItem[] = [
     children: [
       { label: "About", href: "/about" },
       { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
