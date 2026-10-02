@@ -25,9 +25,14 @@ export const metadata: Metadata = {
   },
 };
 
+// Nginx falls back to this page for paths with no exported file, which includes posts published
+// after the last build; send those to the client-side reader before the homepage paints.
+const UNBUILT_POST_REDIRECT = `(function(){var m=location.pathname.match(/^\\/blog\\/([^\\/]+)\\/?$/);if(m&&m[1]!=="read"&&m[1]!=="_")location.replace("/blog/read/?slug="+m[1]+location.hash);})();`;
+
 export default function Home() {
   return (
     <div className="min-h-screen min-w-0 bg-[#e8f4ea] text-slate-900">
+      <script dangerouslySetInnerHTML={{ __html: UNBUILT_POST_REDIRECT }} />
       <JsonLd data={faqJsonLd(HOME2_FAQS)} />
       <Home2Header />
 

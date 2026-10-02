@@ -56,6 +56,14 @@ type SidebarResponse = {
   data?: BlogSidebarData;
 };
 
+/** Fetch helpers swallow errors so pages still render; during `next build` that hides missing post pages, so say so. */
+function warnDuringBuild(what: string, detail: unknown) {
+  if (typeof window !== "undefined") return;
+  const cause = detail instanceof Error && detail.cause instanceof Error ? ` (${detail.cause.message})` : "";
+  const reason = detail instanceof Error ? detail.message + cause : String(detail);
+  console.warn(`[blog] Could not load ${what} from ${API_BASE}: ${reason}. Posts published so far get no static page in this build.`);
+}
+
 /** Backend caps `per_page` at 20. */
 export const BLOG_PAGE_SIZE = 12;
 
@@ -69,11 +77,15 @@ export async function fetchBlogPosts(
   }
   try {
     const res = await fetch(`${API_BASE}/blog/posts?${params}`, init);
-    if (!res.ok) return null;
+    if (!res.ok) {
+      warnDuringBuild("blog posts", `HTTP ${res.status}`);
+      return null;
+    }
     const json: ListResponse = await res.json();
     if (!json.success || !json.data) return null;
     return { posts: json.data.posts ?? [], pagination: json.data.pagination ?? null };
-  } catch {
+  } catch (error) {
+    warnDuringBuild("blog posts", error);
     return null;
   }
 }
